@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <checkout_onepage_success>
+        <reference name="content">
+            <block type="bringg/bringg" name="bringg" template="efedesign/bringg.phtml"></block>
+        </reference>
+    </checkout_onepage_success>
+</layout>

@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<config>
+ <tabs>
+  <efetech translate="label" module="bringg">
+    <label>Efetech Extension</label>
+    <sort_order>0</sort_order>
+</efetech>
+</tabs>
+<sections>
+    <efetech translate="label" module="bringg">
+        <label>Magento Bringg Intergration</label>
+        <tab>efetech</tab>
+        <sort_order>0</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+
+        <groups>
+            <general translate="label" module="bringg">
+                <label>General</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>0</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <enable translate="label">
+                        <label>Enable: </label>
+                        <frontend_type>select</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </enable>
+                    <company_id translate="label">
+                        <label>Company ID: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </company_id>
+                    <access_token translate="label">
+                        <label>Access Token: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </access_token>
+                    <secret_key translate="label">
+                        <label>Secret Key: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>30</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </secret_key>
+                    <store_address translate="label">
+                        <label>Store's address ID: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>35</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </store_address>
+                    <order_api translate="label">
+                        <label>Order Api Url: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>40</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </order_api>
+                    <user_api translate="label">
+                        <label>Driver Api Url: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>50</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </user_api>
+                    <customer_api translate="label">
+                        <label>Customer Api Url: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>60</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </customer_api>
+                    <inventory_api translate="label">
+                        <label>Inventory Api Url: </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>70</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </inventory_api>
+                    <!-- <test_keys translate="label">
+                        <label>Test Keys: </label>
+                        <frontend_type>select</frontend_type>
+                        <sort_order>40</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </test_keys> -->
+                </fields>
+            </general>
+        </groups>
+    </efetech>
+</sections>
+</config>

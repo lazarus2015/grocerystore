@@ -1,0 +1,1244 @@
+<?xml version="1.0" ?>
+<widgets>
+	<blacknwhite_featuredcategory_extended type="meigeewidgetsblacknwhite/featuredcategory">
+		<name>Meigee - Blacknwhite/Featured Category Extended</name>
+		<description type="desc">Adds a list of products from featured category with advanced parameters</description>
+		<parameters>
+			<featured_category>
+				<visible>1</visible>
+				<label>Featured Category</label>
+				<required>1</required>
+				<type>label</type>
+				<helper_block>
+					<type>adminhtml/catalog_category_widget_chooser</type>
+					<data>
+						<button translate="open">
+							<open>Select Category...</open>
+						</button>
+					</data>
+				</helper_block>
+			</featured_category>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<description>If slider is chosen, make sure that you have the same amount of available products in chosen category as set in "Amount of Visible Products" field,  otherwise slider won't run</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/templates</source_model>
+			</template>
+			<content translate="label">
+				<label>Content</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>meigeewidgetsblacknwhite/types_widgetcontent</type>
+				<values>
+					<text translate="label">
+						<value>widget content</value>
+						<label>Content</label>
+					</text>
+				</values>
+			</content>
+			<products_amount>
+				<label>Amount of Products to Display</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<value>10</value>
+			</products_amount>
+			<products_per_row>
+				<label>Products per Row</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<value>4</value>
+				<source_model>meigeewidgetsblacknwhite/productsperrow</source_model>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/grid.phtml</value>
+					</template>
+				</depends>
+			</products_per_row>
+			<visible_products>
+				<label>Amount of Visible Products</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/visible</source_model>
+				<value>4</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</visible_products>
+			<columns_ratio>
+				<label>Columns Ratio</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/columnsratio</source_model>
+				<value>2</value>
+				<description>First value is applied to the image, second - to the description block.</description>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/list.phtml</value>
+					</template>
+				</depends>
+			</columns_ratio>
+			<product_name>
+				<label>Product Name</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</product_name>
+			<price>
+				<label>Product Price</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</price>
+			<add_to_cart>
+				<label>Button "Add to cart"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</add_to_cart>
+			<wishlist>
+				<label>Button "Wishlist"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</wishlist>
+			<compare>
+				<label>Button "Compare products"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</compare>
+			<quickview>
+				<label>Quick view</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</quickview>
+			<moreviews>
+				<label>More Views</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</moreviews>
+			<rating_stars>
+				<label>Rating Stars</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_stars>
+			<rating_cust_link>
+				<label>Ratings Customer link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_cust_link>
+			<rating_add_review_link>
+				<label>"Add your review" link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_add_review_link>
+			<autoSlide translate="label">
+				<label>Auto Slide</label>
+				<description>Enables automatic cycling through slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>0</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</autoSlide>
+			<autoSlideTimer translate="label">
+				<label>Auto Slide Timer</label>
+				<description>The time (in milliseconds) that a slide will wait before automatically navigating to the next slide</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTimer>
+			<autoSlideTransTimer translate="label">
+				<label>Auto Slide Trans Timer</label>
+				<description>The time (in milliseconds) required for all automatic animations to move between slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTransTimer>
+			<widget_id translate="label">
+				<label>Widget ID</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/number</source_model>
+				<description>Generated automatically</description>
+			</widget_id>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_featuredcategory_extended>
+	<blacknwhite_newproducts_extended type="meigeewidgetsblacknwhite/newproducts">
+		<name>Meigee - Blacknwhite/New Products Extended</name>
+		<description type="desc">Adds a list of new products with advanced parameters</description>
+		<parameters>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<description>If slider is chosen, make sure that you have the same amount of available products in chosen category as set in "Amount of Visible Products" field,  otherwise slider won't run</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/templates</source_model>
+			</template>
+			<content translate="label">
+                <label>Content</label>
+                <visible>1</visible>
+                <required>1</required>
+				<type>meigeewidgetsblacknwhite/types_widgetcontent</type>
+				<values>
+					<text translate="label">
+						<value>widget content</value>
+						<label>Content</label>
+					</text>
+				</values>
+			</content>
+			<products_amount>
+				<label>Amount of Products to Display</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<value>10</value>
+			</products_amount>
+			<products_per_row>
+				<label>Products per Row</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<value>4</value>
+				<source_model>meigeewidgetsblacknwhite/productsperrow</source_model>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/grid.phtml</value>
+					</template>
+				</depends>
+			</products_per_row>
+			<visible_products>
+				<label>Amount of Visible Products</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/visible</source_model>
+				<value>4</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</visible_products>
+			<columns_ratio>
+				<label>Columns Ratio</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/columnsratio</source_model>
+				<value>2</value>
+				<description>First value is applied to the image, second - to the description block.</description>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/list.phtml</value>
+					</template>
+				</depends>
+			</columns_ratio>
+			<product_name>
+				<label>Product Name</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</product_name>
+			<price>
+				<label>Product Price</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</price>
+			<add_to_cart>
+				<label>Button "Add to cart"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</add_to_cart>
+			<wishlist>
+				<label>Button "Wishlist"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</wishlist>
+			<compare>
+				<label>Button "Compare products"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</compare>
+			<quickview>
+				<label>Quick view</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</quickview>
+			<moreviews>
+				<label>More Views</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</moreviews>
+			<rating_stars>
+				<label>Rating Stars</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_stars>
+			<rating_cust_link>
+				<label>Ratings Customer link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_cust_link>
+			<rating_add_review_link>
+				<label>"Add your review" link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_add_review_link>
+			<autoSlide translate="label">
+				<label>Auto Slide</label>
+				<description>Enables automatic cycling through slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>0</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</autoSlide>
+			<autoSlideTimer translate="label">
+				<label>Auto Slide Timer</label>
+				<description>The time (in milliseconds) that a slide will wait before automatically navigating to the next slide</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTimer>
+			<autoSlideTransTimer translate="label">
+				<label>Auto Slide Trans Timer</label>
+				<description>The time (in milliseconds) required for all automatic animations to move between slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTransTimer>
+			<widget_id translate="label">
+				<label>Widget ID</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/number</source_model>
+				<description>Generated automatically</description>
+			</widget_id>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_newproducts_extended>
+	<blacknwhite_bestsellers_extended type="meigeewidgetsblacknwhite/bestsellers">
+		<name>Meigee - Blacknwhite/Bestsellers Extended</name>
+		<description type="desc">Adds a list of best selling products with advanced parameters</description>
+		<parameters>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<description>If slider is chosen, make sure that you have the same amount of available products in chosen category as set in "Amount of Visible Products" field,  otherwise slider won't run</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/templates</source_model>
+			</template>
+			<content translate="label">
+                <label>Content</label>
+                <visible>1</visible>
+                <required>1</required>
+				<type>meigeewidgetsblacknwhite/types_widgetcontent</type>
+				<values>
+					<text translate="label">
+						<value>widget content</value>
+						<label>Content</label>
+					</text>
+				</values>
+			</content>
+			<products_amount>
+				<label>Amount of Products to Display</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<value>10</value>
+			</products_amount>
+			<products_per_row>
+				<label>Products per Row</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<value>4</value>
+				<source_model>meigeewidgetsblacknwhite/productsperrow</source_model>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/grid.phtml</value>
+					</template>
+				</depends>
+			</products_per_row>
+			<visible_products>
+				<label>Amount of Visible Products</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/visible</source_model>
+				<value>4</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</visible_products>
+			<columns_ratio>
+				<label>Columns Ratio</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/columnsratio</source_model>
+				<value>2</value>
+				<description>First value is applied to the image, second - to the description block.</description>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/list.phtml</value>
+					</template>
+				</depends>
+			</columns_ratio>
+			<product_name>
+				<label>Product Name</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</product_name>
+			<price>
+				<label>Product Price</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</price>
+			<add_to_cart>
+				<label>Button "Add to cart"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</add_to_cart>
+			<wishlist>
+				<label>Button "Wishlist"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</wishlist>
+			<compare>
+				<label>Button "Compare products"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</compare>
+			<quickview>
+				<label>Quick view</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</quickview>
+			<moreviews>
+				<label>More Views</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</moreviews>
+			<rating_stars>
+				<label>Rating Stars</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_stars>
+			<rating_cust_link>
+				<label>Ratings Customer link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_cust_link>
+			<rating_add_review_link>
+				<label>"Add your review" link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_add_review_link>
+			<autoSlide translate="label">
+				<label>Auto Slide</label>
+				<description>Enables automatic cycling through slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>0</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</autoSlide>
+			<autoSlideTimer translate="label">
+				<label>Auto Slide Timer</label>
+				<description>The time (in milliseconds) that a slide will wait before automatically navigating to the next slide</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTimer>
+			<autoSlideTransTimer translate="label">
+				<label>Auto Slide Trans Timer</label>
+				<description>The time (in milliseconds) required for all automatic animations to move between slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTransTimer>
+			<widget_id translate="label">
+				<label>Widget ID</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/number</source_model>
+				<description>Generated automatically</description>
+			</widget_id>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_bestsellers_extended>
+	<blacknwhite_saleproducts_extended type="meigeewidgetsblacknwhite/saleproducts">
+		<name>Meigee - Blacknwhite/On Sale Products Extended</name>
+		<description type="desc">Adds a list of on sale products with advanced parameters</description>
+		<parameters>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<description>If slider is chosen, make sure that you have the same amount of available products in chosen category as set in "Amount of Visible Products" field,  otherwise slider won't run</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/templates</source_model>
+			</template>
+			<content translate="label">
+                <label>Content</label>
+                <visible>1</visible>
+                <required>1</required>
+				<type>meigeewidgetsblacknwhite/types_widgetcontent</type>
+				<values>
+					<text translate="label">
+						<value>widget content</value>
+						<label>Content</label>
+					</text>
+				</values>
+			</content>
+			<products_amount>
+				<label>Amount of Products to Display</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<value>10</value>
+			</products_amount>
+			<products_per_row>
+				<label>Products per Row</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<value>4</value>
+				<source_model>meigeewidgetsblacknwhite/productsperrow</source_model>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/grid.phtml</value>
+					</template>
+				</depends>
+			</products_per_row>
+			<visible_products>
+				<label>Amount of Visible Products</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/visible</source_model>
+				<value>4</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</visible_products>
+			<columns_ratio>
+				<label>Columns Ratio</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/columnsratio</source_model>
+				<value>2</value>
+				<description>First value is applied to the image, second - to the description block.</description>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/list.phtml</value>
+					</template>
+				</depends>
+			</columns_ratio>
+			<product_name>
+				<label>Product Name</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</product_name>
+			<price>
+				<label>Product Price</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</price>
+			<add_to_cart>
+				<label>Button "Add to cart"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</add_to_cart>
+			<wishlist>
+				<label>Button "Wishlist"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</wishlist>
+			<compare>
+				<label>Button "Compare products"</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</compare>
+			<quickview>
+				<label>Quick view</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</quickview>
+			<moreviews>
+				<label>More Views</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</moreviews>
+			<rating_stars>
+				<label>Rating Stars</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_stars>
+			<rating_cust_link>
+				<label>Ratings Customer link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_cust_link>
+			<rating_add_review_link>
+				<label>"Add your review" link</label>
+				<visible>1</visible>
+				<required>0</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_enabledisable</source_model>
+				<value>1</value>
+			</rating_add_review_link>
+			<autoSlide translate="label">
+				<label>Auto Slide</label>
+				<description>Enables automatic cycling through slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>0</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+			</autoSlide>
+			<autoSlideTimer translate="label">
+				<label>Auto Slide Timer</label>
+				<description>The time (in milliseconds) that a slide will wait before automatically navigating to the next slide</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTimer>
+			<autoSlideTransTimer translate="label">
+				<label>Auto Slide Trans Timer</label>
+				<description>The time (in milliseconds) required for all automatic animations to move between slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTransTimer>
+			<widget_id translate="label">
+				<label>Widget ID</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/number</source_model>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/slider.phtml</value>
+					</template>
+				</depends>
+				<description>Generated automatically</description>
+			</widget_id>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_saleproducts_extended>
+	<blacknwhite_social_links type="meigeewidgetsblacknwhite/sociallinks">
+		<name>Meigee - Blacknwhite/Social links widget</name>
+		<description type="desc">Adds social links to any pages or static blocks</description>
+		<parameters>
+			<twitter>
+				<label>Twitter</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>1</sort_order>
+				<description>Example: http://twitter.com (Leave empty to hide)</description>
+			</twitter>
+			<rss translate="label">
+				<label>RSS</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>2</sort_order>
+				<description>Example: http://rss.com (Leave empty to hide)</description>
+			</rss>
+			<facebook translate="label">
+				<label>Facebook</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>3</sort_order>
+				<description>Example: http://facebook.com (Leave empty to hide)</description>
+			</facebook>
+			<googleplus translate="label">
+				<label>Google +</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>4</sort_order>
+				<description>Example: https://plus.google.com/ (Leave empty to hide)</description>
+			</googleplus>
+			<linkedin translate="label">
+				<label>Linkedin</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>5</sort_order>
+				<description>Example: http://linkedin.com (Leave empty to hide)</description>
+			</linkedin>
+			<pinterest translate="label">
+				<label>Pinterest</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>6</sort_order>
+				<description>Example: http://pinterest.com/ (Leave empty to hide)</description>
+			</pinterest>
+			
+			<vimeo translate="label">
+				<label>Vimeo</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>7</sort_order>
+				<description>Example: https://vimeo.com/ (Leave empty to hide)</description>
+			</vimeo>
+			<youtube translate="label">
+				<label>Youtube</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>8</sort_order>
+				<description>Example: http://youtube.com/ (Leave empty to hide)</description>
+			</youtube>
+			<flickr translate="label">
+				<label>Flickr</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>9</sort_order>
+				<description>Example: http://flickr.com/ (Leave empty to hide)</description>
+			</flickr>
+			<instagram translate="label">
+				<label>Instagram</label>
+				<type>text</type>
+				<visible>1</visible>
+				<sort_order>10</sort_order>
+				<description>Example: http://instagram.com/ (Leave empty to hide)</description>
+			</instagram>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<visible>0</visible>
+				<required>1</required>
+				<type>select</type>
+				<value>meigee/meigeewidgetsblacknwhite/sociallinks.phtml</value>
+			</template>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+				<sort_order>11</sort_order>
+			</cache_lifetime>
+			<targetblank>
+				<label>Link target blank</label>
+				<description>Choose "Yes" if you want open link in a new tab</description>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>0</value>
+				<visible>1</visible>
+				<sort_order>12</sort_order>
+			</targetblank>
+		</parameters>
+	</blacknwhite_social_links>
+	<blacknwhite_latest_tweets type="meigeewidgetsblacknwhite/tweets">
+		<name>Meigee - Blacknwhite/Latest Tweets</name>
+		<description type="desc">Adds a list of your latest tweets</description>
+		<parameters>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<visible>0</visible>
+				<required>1</required>
+				<type>select</type>
+				<value>meigee/meigeewidgetsblacknwhite/tweets.phtml</value>
+			</template>
+			<twitter_username>
+				<label>Twitter Username</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<value></value>
+			</twitter_username>
+			<twitter_widget_id>
+				<label>Twitter Widget ID</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<description><![CDATA[You can find it on your twitter widget settings page]]></description>
+				<value></value>
+			</twitter_widget_id>
+			<tweet_limit>
+				<label>Tweet limit</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<description>A preset number of Tweets. Value may be set between 1 and 20</description>
+				<value>2</value>
+			</tweet_limit>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_latest_tweets>
+	<blacknwhite_brandslider type="meigeewidgetsblacknwhite/brandslider">
+		<name>Meigee - Blacknwhite/Brands Showcase</name>
+		<description type="desc"><![CDATA[Adds a list of your manufacturers. <span style="color:red">Refer to the user guide before adding this widget</span>]]></description>
+		<parameters>
+			<brands translate="label">
+				<label>Brands</label>
+				<description>Select brands you want to be displayed</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>multiselect</type>
+				<source_model>meigeewidgetsblacknwhite/brandslist</source_model>
+			</brands>
+			<viewtype translate="label">
+				<label>Display as</label>
+				<description><![CDATA[<span style="color:red">Choose "slider" option only if the sum width of your brand images is greater than 1252px, otherwise slider won't run</span>]]></description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/brandsview</source_model>
+			</viewtype>
+			<brandsearch translate="label">
+				<label>Link to brand search</label>
+				<description>Images will refer to search products by brand</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+			</brandsearch>
+			<target translate="label">
+				<label>Link target blank</label>
+				<description>Choose "Yes" if you want open links in a new tab</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<depends>
+					<brandsearch>
+						<value>1</value>
+					</brandsearch>
+				</depends>
+			</target>
+			<imagesformat translate="label">
+				<label>Images Format</label>
+				<description>All of your images must have the same format</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/imagesformat</source_model>
+			</imagesformat>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<visible>0</visible>
+				<required>1</required>
+				<type>select</type>
+				<value>meigee/meigeewidgetsblacknwhite/manufacturers.phtml</value>
+			</template>
+			<widget_id translate="label">
+				<label>Widget ID</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/number</source_model>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/manufacturers.phtml</value>
+					</template>
+					<viewtype>
+						<value>slider</value>
+					</viewtype>
+				</depends>
+				<description>Generated automatically</description>
+			</widget_id>
+			<autoSlide translate="label">
+				<label>Auto Slide</label>
+				<description>Enables automatic cycling through slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>0</value>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/manufacturers.phtml</value>
+					</template>
+				</depends>
+			</autoSlide>
+			<autoSlideTimer translate="label">
+				<label>Auto Slide Timer</label>
+				<description>The time (in milliseconds) that a slide will wait before automatically navigating to the next slide</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/manufacturers.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTimer>
+			<autoSlideTransTimer translate="label">
+				<label>Auto Slide Trans Timer</label>
+				<description>The time (in milliseconds) required for all automatic animations to move between slides</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<depends>
+					<template>
+						<value>meigee/meigeewidgetsblacknwhite/manufacturers.phtml</value>
+					</template>
+					<autoSlide>
+						<value>1</value>
+					</autoSlide>
+				</depends>
+			</autoSlideTransTimer>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_brandslider>
+	<blacknwhite_fblikebox type="meigeewidgetsblacknwhite/fblikebox">
+		<name>Meigee - Blacknwhite/FB LikeBox</name>
+		<description type="desc"><![CDATA[The Like Box is a special version of the Like Button designed only for Facebook Pages. It allows admins to promote Pages.]]></description>
+		<parameters>
+			<href translate="label">
+				<label>Facebook Page URL</label>
+				<description>The URL of the Facebook Page to like</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+			</href>
+			<height translate="label">
+				<label>Height</label>
+				<description>The pixel height of the plugin</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+			</height>
+			<colorscheme translate="label">
+				<label>Color Scheme</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/Fbschemes</source_model>
+			</colorscheme>
+			<faces translate="label">
+				<label>Show Friends' Faces</label>
+				<description>Show profile photos when friends like this</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+			</faces>
+			<header translate="label">
+				<label>Show Header</label>
+				<description>Show the "Find Us on Facebook" header on the plugin</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+			</header>
+			<stream translate="label">
+				<label>Show Posts</label>
+				<description>Show posts from the Page's timeline</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+			</stream>
+			<border translate="label">
+				<label>Show Border</label>
+				<description>Show a border around the plugin</description>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+			</border>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<visible>0</visible>
+				<required>1</required>
+				<type>select</type>
+				<value>meigee/meigeewidgetsblacknwhite/fblikebox.phtml</value>
+			</template>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_fblikebox>
+	<blacknwhite_tabs type="meigeewidgetsblacknwhite/tabs">
+		<name>Meigee - Blacknwhite/Custom Tabs</name>
+		<description type="desc"><![CDATA[You can display your static blocks as tabs using this widget]]></description>
+		<parameters>
+			<static_blocks translate="label">
+				<label>Choose Static Blocks</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>multiselect</type>
+				<source_model>meigeewidgetsblacknwhite/Staticblocks</source_model>
+				<value>1</value>
+			</static_blocks>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<visible>0</visible>
+				<required>1</required>
+				<type>select</type>
+				<value>meigee/meigeewidgetsblacknwhite/tabs.phtml</value>
+			</template>
+			<buttons_pos translate="label">
+				<label>Buttons Position</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>meigeewidgetsblacknwhite/Buttonspos</source_model>
+				<value>1</value>
+			</buttons_pos>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</blacknwhite_tabs>	
+</widgets>

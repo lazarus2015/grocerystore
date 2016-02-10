@@ -1,0 +1,40 @@
+<?php
+$brand = $this->getRequest()->getParam('name');
+$productCollection = Mage::getModel('catalog/product')
+->getCollection()
+    ->addAttributeToSelect('*') //instead of * you can use an array with the required attributes
+    // ->addAttributeToFilter(array(
+    // 	array('attribute' => 'brand', 'neq' => $brand))
+    // )
+   ;
+    $cateIds = array();
+    foreach ($productCollection as $_product){
+    	$cate = $_product->getCategoryIds();
+    	if(strlen(strstr($_product->getBrand(), $brand)) > 0){
+    		foreach ($cate as $v) {
+	    		$cateIds[] = $v;
+	    	}
+    	}
+    }
+    $ids = array_unique($cateIds);
+    $i=0;
+    ?>
+    <div class="over_hidden bycatelogy" style="margin-top: 10px;">
+    	<?php if(count($ids)):?>
+    		<?php foreach ($ids as $subCategoryId): ?>
+    			<?php $category = Mage::getModel('catalog/category')->load($subCategoryId); ?>
+    			<?php ; if ($category->getIsActive() && $category->getThumbnail() ):?>
+    			<?php $i++;?>
+    			<div class="grid_3 omega <?php if($i%7 == 0){ echo 'clr'; $i=1; }?>">
+    				<a href="<?php echo $category->getURL(); ?>">
+    					<!-- <a href="http://grocerystore.litfdemo.com/shop-groceries/food.html"> -->
+    					<img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt="" />
+    					<h3><?php echo $category->getName(); ?></h3>
+    				</a>
+    			</div>
+    		<?php endif;?>
+    	<?php endforeach; ?>
+    <?php else:?>
+    	<h2>Subcategory not available.</h2>
+    <?php endif;?>
+</div>

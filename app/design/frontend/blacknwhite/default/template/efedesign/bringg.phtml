@@ -1,0 +1,38 @@
+<?php if($this->checkEnable()): ?>
+
+	<?php
+	$orderId = $this->getOrderID();
+	$timezone =  Mage::getStoreConfig('general/locale/timezone');
+	date_default_timezone_set($timezone);
+	$date = time();
+	
+	// $date = Mage::getModel('core/date')->date('Y-m-d H:i:s');
+	$today = date('Y-m-d H:i:s', strtotime('+2 hour' , $date));
+	$scheduledAt = $this->getDeliveryDate();
+	$scheduledAt = str_replace(' ', 'T', $scheduledAt);
+	$scheduledAt = date('c', strtotime($scheduledAt));
+	if(strtotime($today) > strtotime($scheduledAt)){
+		$customerId = $this->getCustomerID();
+		$storeAddress = $this->getStoreAddress();
+		$kitchenId = $this->getKitchenId();
+		$butcherId = $this->getButcherId();
+		$stockboyId = $this->getStockId();
+		$driverId = $this->getDriverId();
+		$title = '#'.$this->getTitle();
+		$taskInventory = $this->getTaskInventory();
+		$this->createTask($storeAddress, $stockboyId, $title, $scheduledAt, $taskInventory);
+		$this->createTask($customerId, $driverId, $title, $scheduledAt, $taskInventory);
+
+		if($this->getDeliInventory($orderId) != '[]'){
+			$taskInventory = $this->getDeliInventory($orderId);
+			$this->createTask($storeAddress, $butcherId, $title, $scheduledAt, $taskInventory);
+		}
+		if($this->getKitchenInventory($orderId) != '[]'){
+			$taskInventory = $this->getKitchenInventory($orderId);
+			$this->createTask($storeAddress, $kitchenId, $title, $scheduledAt, $taskInventory);
+		}
+		$this->setCronCheck();
+	}
+	?>
+
+<?php endif; ?>

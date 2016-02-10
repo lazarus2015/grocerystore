@@ -1,0 +1,173 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2010-2014 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php
+$meigee_blacknwhite_general = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('meigee_blacknwhite_general');
+$customlogo = $meigee_blacknwhite_general['customlogo'];
+$mediaurl = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('mediaurl');
+$loginAjaxStatus = $meigee_blacknwhite_general['loginajax']['status'];
+$customer = Mage::getSingleton('customer/session');
+$stickyStatus = $meigee_blacknwhite_general['header']['floatingheader'];
+$stickyClose = $meigee_blacknwhite_general['header']['floatingheader_close'];
+$stickyTime = $meigee_blacknwhite_general['header']['floatingheader_time'];
+$stickyCookie = Mage::getModel('core/cookie')->get("blacknwhiteSticky");
+$stickyOptions = $meigee_blacknwhite_general['header']['floatingheader_options'];
+$toplinks = $meigee_blacknwhite_general['toplinks'];
+?>
+<?php if (Mage::getSingleton('cms/page')->getIdentifier() != 'home'){ ?>
+<div class="header-wrapper <?php if($stickyStatus){echo str_replace(',', ' ', $stickyOptions);} ?>">
+	<header id="header"<?php if($stickyStatus and substr_count($stickyOptions, 'sticky-logo') == 0){echo ' class="no-sticky-logo"';} ?>>
+		<div class="logo-top">
+			<div class="container_12" style="background-color:none !important;">
+				<div class="grid_12">
+					<?php if ($customlogo['logo_status'] == 0): ?>
+						<h2 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img style="width:150px;" src="<?php echo $this->getLogoSrc() ?>" <?php echo MAGE::helper('ThemeOptionsBlacknwhite/Retina')->getRetinaData('logo'); ?> alt="<?php echo $this->getLogoAlt() ?>" /></a></h2>
+					<?php else:?>
+						<h2 class="logo" style="position:relative;left:43%;padding-top:10px;"><strong><?php echo $customlogo['logo_alt']; ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $customlogo['logo_alt']; ?>" class="logo"><img style="width:150px;" src="<?php echo $mediaurl.$customlogo['logo']; ?>" <?php echo MAGE::helper('ThemeOptionsBlacknwhite/Retina')->getRetinaData('logo_custom'); ?> alt="<?php echo $customlogo['logo_alt']; ?>" /></a></h2>
+					<?php endif; ?>
+					<div class="header-top-right<?php if($stickyClose){echo ' sticky-close-box';} ?>">
+						<div class="quick-access<?php if($toplinks['displayas'] == 1){echo ' simple-list';} if(Mage::getSingleton('customer/session')->isLoggedIn()==1){echo ' logged-in';} if($toplinks['accountlink'] == 1){echo ' accountlink';} if($toplinks['wishlistlink'] == 1){echo ' wishlistlink';} if($toplinks['cartlink'] == 1){echo ' cartlink';} if($toplinks['checkoutlink'] == 1){echo ' checkoutlink';} if($toplinks['loginlink'] == 1){echo ' loginlink';} ?>">
+							<?php if (Mage::getSingleton('customer/session')->isLoggedIn()==0): ?>
+								<!-- <p class="welcome-msg"><span><?php echo $this->getWelcome() ?><?php echo $this->getAdditionalHtml() ?></span>
+								</p> -->
+							<?php else:
+							if($toplinks['displayas'] == 1){echo '<span class="simple">';}
+							echo '<span class="customer-name"><span class="user">'. MAGE::helper('ThemeOptionsBlacknwhite')->getIcon('account') .'</span>' . $customer->getCustomer()->getName() . '<span class="arrow"><i class="fa fa-caret-down"></i></span></span>';
+							if($toplinks['displayas'] == 1){echo '</span>';}
+							endif; ?>
+							<?php if($toplinks['displayas'] == 1): ?><div class="mobile-links"><i class="fa fa-key"></i></div><?php endif; ?>
+							<?php
+							$strTokens = explode('<li', $this->getChildHtml('topLinks'));
+							foreach($strTokens as $key => $token){
+								if(strpos($token, 'top-link-wishlist')){
+									if (Mage::app()->getStore()->isCurrentlySecure()){
+										$strTokens[$key] = str_replace('http:', 'https:', $strTokens[$key]);
+									}else{
+										$strTokens[$key] = str_replace('https:', 'http:', $strTokens[$key]);
+									}
+								}
+							}
+							$topLinks = implode('<li', $strTokens);
+							echo $topLinks;
+							?>
+							
+						</div>
+						<div class="clear"></div>
+					<!--<?php echo $this->getChildHtml('currency') ?>
+					<?php echo $this->getChildHtml('store_language') ?>-->
+					<div class="desktop_search"><?php echo $this->getChildHtml('topSearch') ?></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="topline<?php if($stickyClose){echo ' sticky-close-box';} ?>">
+		<div class="container_12">
+			<div class="grid_12">
+				<?php if ($customlogo['small_logo_status'] == 0): ?>
+					<h2 class="small_logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="small-logo"><img src="<?php echo $this->getSkinUrl('images/small_logo.png') ?>" <?php echo MAGE::helper('ThemeOptionsBlacknwhite/Retina')->getRetinaData('small_logo'); ?> alt="<?php echo $this->getLogoAlt() ?>" /></a></h2>
+				<?php else:?>
+					<h2 class="small_logo"><strong><?php echo $customlogo['logo_alt']; ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $customlogo['logo_alt']; ?>" class="small-logo"><img src="<?php echo $mediaurl.$customlogo['small_logo']; ?>" <?php echo MAGE::helper('ThemeOptionsBlacknwhite/Retina')->getRetinaData('small_logo_custom'); ?> alt="<?php echo $customlogo['logo_alt']; ?>" /></a></h2>
+				<?php endif; ?>
+				<?php echo $this->getChildHtml('topMenu') ?>
+                <?php //echo $this->getChildHtml('Mainmenu') ?>
+				<div class="menu-button"><?php echo MAGE::helper('ThemeOptionsBlacknwhite')->getIcon('mobilemenu'); ?><span><?php echo $this->__('Menu'); ?></span></div>
+				<span class="wishlist-items"><?php echo $this->helper('wishlist')->getItemCount() ?></span>
+				<?php echo $this->getChildHtml('cart_sidebar') ?>
+				<?php if($stickyClose): ?>
+					<a href="javascript:void(0);" class="sticky-close"><i class="fa fa-times"></i></a>
+				<?php endif; ?>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</header>
+</div>
+<?php if (Mage::getSingleton('cms/page')->getIdentifier() == 'page-product' && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms'): ?>
+	<?php if ($static_html = $this->getChildHtml('blacknwhite_home_text_blocks')): ?>
+		<div class="bg_note">
+			<div class="home-text-blocks">
+				<div class="container_12">
+					<div class="grid_12">
+						<?php// echo $static_html; ?>
+						<p>Search Multiple Products(ex.bananas,juice,apples) <i class="fa fa-times" style="float:right"></i></p>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	<?php endif; ?>
+<?php endif; ?>
+<?php echo $this->getChildHtml('header_slider_container'); ?>
+
+<?php if($this->getChildHtml('topContainer')): ?>
+	<div class="container_12 header-position">
+		<div class="grid_12">
+			<?php echo $this->getChildHtml('topContainer'); ?>
+		</div>
+		<div class="clear"></div>
+	</div>
+<?php endif; ?>
+<?php if($loginAjaxStatus): ?>
+	<script type="text/javascript">
+		/* Login ajax */
+		jQuery('.top-link-login').on('click', function(){
+			<?php if (Mage::app()->getStore()->isCurrentlySecure()): ?>
+			ajaxLogin("<?php echo $this->getUrl('meigeeactions/login/', array('_secure'=>true)) ?>", false);
+		<?php else : ?>
+		ajaxLogin("<?php echo $this->getUrl('meigeeactions/login/', array('_secure'=>false)) ?>", false);
+	<?php endif; ?>
+	return false;
+});
+	</script>
+<?php endif; ?>
+<?php if($stickyClose and !$stickyCookie): ?>
+	<script type="text/javascript">
+		jQuery('.sticky-close').on('click', function(){
+			sticky.hide();
+			jQuery(window).off('scroll.sticky');
+
+			jQuery.cookie('blacknwhiteSticky', 'true', {
+				expires: <?php echo $stickyTime; ?>,
+				path: '/'
+			});
+		});
+	</script>
+<?php endif; ?>
+<?php if($stickyCookie): ?>
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			sticky.hide();
+			jQuery(window).off('scroll.sticky');
+		});
+	</script>
+<?php endif; ?>
+
+<?php if (Mage::getSingleton('cms/page')->getIdentifier() == 'page-product' && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms'): ?>
+	<?php if ($static_html = $this->getChildHtml('blacknwhite_home_text_blocks')): ?>
+	<div class="icon-follow">	
+		<div class="home-text-blocks">
+			<div class="container_12">
+				<div class="grid_12">
+					<?php echo $static_html; ?>					
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		</div>
+		<div style="height:40px;width:100%;background:#2f2f2f;"></div>
+	<?php endif; ?>
+<?php endif; ?>
+<?php } ?>

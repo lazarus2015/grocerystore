@@ -1,0 +1,110 @@
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+<?php
+$package = Mage::getDesign()->getPackageName();
+$theme = Mage::getDesign()->getTheme('frontend');
+?>
+<div class="opc-wrapper-opc design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+	<div class="page-title">
+		<h2 class="opc-title"><?php echo $this->__('Checkout')?></h2>
+		<p><?php echo $this->__('Fill in the Fields below to complete your purchase!')?></p>
+		<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+			<?php echo $this->getChildHtml('login');?>
+		<?php endif;?>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="opc-col-left">
+		<div class="indent">
+			<form id="opc-address-form-billing" method="post">
+				<?php echo $this->getChildHtml('billing')?>
+			</form>
+			<form id="opc-address-form-shipping" class="hidden" method="post">
+				<?php echo $this->getChildHtml('shipping')?>
+			</form>
+		</div>
+	</div>
+
+	<div class="opc-col-center">
+		<div class="indent">
+			<?php if (!$this->getOnepage()->getQuote()->isVirtual()):?>
+				<div class="shipping-block">
+					<div class="opc-block-title">
+						<h3><?php echo $this->__('Shipping Method')?></h3>
+					</div>
+					<div id="shipping-block-methods">
+						<?php echo $this->getChildHtml('shipping_method');//$this->_getShippingMethodsHtml();?>
+					</div>
+					<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/jquery.datetimepicker.css'); ?>">
+					<script src="<?php echo $this->getSkinUrl('js/jquery.datetimepicker.full.min.js'); ?>"></script>
+
+					<br/>
+					<span style="font-weight:bold; line-height: 30px;">Delivery date:</span> <input id="delivery_date1" name="delivery_date" value="" class="input-text" type="text">
+					<script>
+						jQuery(document).ready(function(){
+							jQuery( "#delivery_date1" ).datetimepicker();
+
+						});
+						function placeOrder() {
+							jQuery.ajax({
+								url: "<?php echo $this->getUrl('bringg') ?>",
+								type: "POST",
+								data: "delivery_date1=" + jQuery('#delivery_date1').val(),
+								success: function(data) {
+								}
+							});  
+						};
+					</script>
+
+				</div>
+			<?php endif;?>
+
+			<div class="payment-block <?php if ($this->getOnepage()->getQuote()->isVirtual()):?>clear-margin<?php endif;?>">
+				<div class="opc-block-title">
+					<h3><?php echo $this->__('Payment Method')?></h3>
+				</div>
+				<?php echo $this->getChildHtml('payment')//$this->_getPaymentMethodsHtml();?>
+			</div>
+			
+			<div class="discount-block">
+				<div class="opc-block-title">
+					<h3><?php echo $this->__('Discount Codes')?></h3>
+				</div>
+				<?php echo $this->getChildhtml('coupon');?>
+			</div>
+
+			<?php if(Mage::helper('opc')->isShowComment()):?>
+				<?php echo $this->getChildhtml('customer.comment');?>
+			<?php endif;?>
+		</div>
+	</div>
+
+	<div class="opc-col-right">
+		<div class="indent">
+			<div class="opc-block-title">
+				<h3><?php echo $this->__('Review Your Order')?></h3>
+			</div>
+			<div id="opc-review-block">
+				<?php echo $this->_getReviewHtml()?>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var vopc = '<?php echo Mage::getConfig()->getModuleConfig("IWD_Opc")->version;?>';
+	IWD.OPC.Checkout.config = '<?php echo $this->getJsonConfig()?>';
+	<?php if ($this->getOnepage()->getQuote()->isVirtual()):?>
+	IWD.OPC.Checkout.isVirtual = true;
+<?php endif;?>	 
+</script>
+
+<div class="opc-ajax-loader">
+	<div id="floatingCirclesG"><img src="<?php echo $this->getSkinUrl('images/fancybox/fancybox_loading.gif') ?>" alt="" /></div>
+</div>
+<div class="opc-message-wrapper design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+	
+	<div class="opc-messages">
+		<a class="close-message-wrapper"></a>
+		<div class="opc-message-container"></div>
+		<div class="opc-messages-action"><button class="button"><span><span><?php echo $this->__('Close')?></span></span></button></div>
+	</div>
+</div>

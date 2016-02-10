@@ -1,0 +1,56 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2010-2014 MeigeeTeam. (http://www.meigeeteam.com)
+ *
+ *
+ *
+ * Template for Mage_Page_Block_Html
+ */
+$meigee_blacknwhite_general = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('meigee_blacknwhite_general');
+$categoryComplete = Mage::getModel('catalog/category')->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId());
+if($categoryComplete->getSidebarhider()){
+	$sidebarhider = $categoryComplete->getSidebarhider();
+	if($sidebarhider == 2){$sidebarhider = 0;}
+} else {
+	$sidebarhider = $meigee_blacknwhite_general['productlisting']['sidebarhider'];
+}
+$isSidebarHided = $meigee_blacknwhite_general['productlisting']['sidebarhided'];
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<?php echo $this->getChildHtml('global_notices') ?>
+<?php echo $this->getChildHtml('header') ?>
+<div class="content-wrapper">
+    <div class="container_12">    
+        <div class="main-container col3-layout">
+            <div class="grid_12"><?php echo $this->getChildHtml('breadcrumbs') ?></div>
+            <div class="clear"></div>
+            <aside class="grid_3 sidebar sidebar-left<?php if($sidebarhider and $isSidebarHided){echo ' hided';} ?>">
+				<?php echo $this->getChildHtml('left') ?>
+            </aside>
+            <div class="<?php if($sidebarhider and $isSidebarHided){echo 'grid_12';}else{echo 'grid_6';} ?> col-main">
+                <?php echo $this->getChildHtml('global_messages') ?>
+                <?php echo $this->getChildHtml('content') ?>
+            </div>
+            <aside class="grid_3 sidebar sidebar-right<?php if($sidebarhider and $isSidebarHided){echo ' hided';} ?>">
+                <?php echo $this->getChildHtml('right') ?>
+            </aside>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('global_cookie_notice') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

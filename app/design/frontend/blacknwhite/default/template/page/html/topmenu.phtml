@@ -1,0 +1,35 @@
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<?php
+$_menu = $this->getHtml('level-top');
+$menuStatus = Mage::getStoreConfig('meigee_categoriesenhanced/options/status');
+if ($menuStatus == 1) {
+	$navAttr = 'class="nav-wide" id="nav-wide"';
+}
+else {
+	$navAttr = 'class="nav" id="nav"';
+}
+ 
+?>
+
+<!--<div class="mobile_search" style="width:15%;float:left;margin-top:10px;"><?php echo $this->getChildHtml('topSearch') ?></div>-->
+<nav class="nav-container">
+  <!--<ul <?php echo $navAttr; ?>>
+    <?php echo $_menu; ?>
+  </ul>-->
+  <ul <?php echo $navAttr; ?>>
+    <li class="level0 nav-1 first level-top"><a href="<?php echo Mage::getBaseUrl(); ?>shop-groceries/" class="level-top active"><span>Home</span></a></li>
+    <li class="level0 nav-2 level-top"><a href="<?php echo Mage::getBaseUrl(); ?>shop-groceries/about-us.html" class="level-top"><span>About Us</span></a></li>
+    <li class="level0 nav-3 level-top"><a href="<?php echo Mage::getBaseUrl(); ?>shop-groceries/food.html" class="level-top"><span>Food</span></a></li>
+    <li class="level0 nav-4 level-top"><a href="<?php echo Mage::getBaseUrl(); ?>shop-groceries/household.html" class="level-top"><span>Household</span></a></li>
+    <li class="level0 nav-5 level-top"><a href="<?php echo Mage::getBaseUrl(); ?>shop-groceries/daily-menu.html" class="level-top"><span>Daily Menu</span></a></li>
+    <li class="level0 nav-6 level-top"><a href="<?php echo Mage::getBaseUrl(); ?>shop-groceries/weekly-flyers.html" class="level-top"><span>Weekly Flyers</span></a></li>
+    <li class="level0 nav-2 last level-top"><a href="<?php echo Mage::getBaseUrl(); ?>shop-groceries/contact-us.html" class="level-top"><span>Contact Us</span></a></li>
+  </ul>
+</nav>
+<?php //echo $this->getChildHtml('Mainmenu') ?>

@@ -1,0 +1,35 @@
+<?php
+	$subscats = 'bycatelogy';
+	$grid = 'grid_3';
+	$j=5;
+	?>
+<div class="over_hidden <?php echo $subscats; ?>" style="margin-top: 10px;">
+	<?php
+	
+	$categoyrId = $this->getBlockId();;
+	$actualCategory = Mage::getModel('catalog/category')->load($categoyrId);
+	$subCategories = $actualCategory->getChildren();//Mage::getModel('catalog/category')->getResource()->getChildren($actualCategory);
+	$i=0;$jj=0;
+	?>
+	<?php foreach (explode(',',$subCategories) as $subCategoryId): ?>
+		<?php $category = Mage::getModel('catalog/category')->load($subCategoryId);  ?>
+		<?php ; if ($category->getIsActive() && $category->getThumbnail() ):?>
+		<?php $i++; $jj++; ?>
+			<div class="<?php echo $grid; ?> omega <?php if($i%$j == 0){ echo 'clr'; $i=1; }?>">
+				<a href="<?php echo $category->getURL(); ?>">
+					<img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt="" />
+					<h3><?php echo $category->getName(); ?></h3>
+				</a>
+			</div>
+		<?php endif;?>
+	<?php endforeach;?>
+    <?php //echo $jj;
+	if($jj==0){
+		echo '<h2>Subcategory not available.</h2>';
+	}?>
+    
+
+</div>
+<script>
+jQuery('.content-wrapper').addClass('subcats');
+</script>

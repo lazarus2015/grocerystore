@@ -1,0 +1,263 @@
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+ /* #Desktop - Extra Large
+================================================== */
+@media only screen and (min-width: 1281px) {
+	
+	/* Grid >> Global
+	----------------------------------------------------------------------------------------------------*/
+	
+	.grid_1,
+	.grid_2,
+	.grid_3,
+	.grid_4,
+	.grid_5,
+	.grid_6,
+	.grid_7,
+	.grid_8,
+	.grid_9,
+	.grid_10,
+	.grid_11,
+	.grid_12 {
+		float: right;
+	}
+	
+	.alpha{
+		margin-left: 10px;
+		margin-right: 0;
+	}
+	.omega {
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	
+	.product-view > .alpha{
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	.product-view > .omega{
+		margin-left: 10px;
+		margin-right: 0;
+	}
+	
+}
+
+/* For Top Menu */
+@media only screen and (min-width: 978px) {
+	#nav-wide.nav-wide .menu-wrapper.default-menu ul.level0 li.parent:after{left: 19px; right: auto;}
+	#nav-wide.nav-wide .menu-wrapper.default-menu ul.level0 ul{right: 14em;}
+}
+
+ /* #Desktop
+================================================== */   
+    
+@media only screen and (min-width: 978px)  and (max-width: 1280px) {
+	
+	/* Grid >> Global
+	----------------------------------------------------------------------------------------------------*/
+	
+	.grid_1,
+	.grid_2,
+	.grid_3,
+	.grid_4,
+	.grid_5,
+	.grid_6,
+	.grid_7,
+	.grid_8,
+	.grid_9,
+	.grid_10,
+	.grid_11,
+	.grid_12 {
+		float: right;
+	}
+	.alpha{
+		margin-left: 15px;
+		margin-right: 0;
+	}
+	.omega {
+		margin-left: 0;
+		margin-right: 15px;
+	}
+	.product-view > .alpha{
+		margin-left: 0;
+		margin-right: 15px;
+	}
+	.product-view > .omega{
+		margin-left: 15px;
+		margin-right: 0;
+	}
+	
+	body.boxed-layout header#header.floating .sticky-close {
+		left: 0;
+		right: auto;
+	}
+	
+	.col3-layout .toolbar .sorter .sort-by label{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.col3-layout.sidebar-off .toolbar .sidebar-button{float: left;}
+}
+
+/* #Tablet (Portrait)
+================================================== */
+
+/* Note: Design for a width of 768px, Gutter: 20px, Unit: 44px */ 
+@media only screen and (min-width: 768px) and (max-width: 977px) {
+
+	/* Grid >> Global
+	----------------------------------------------------------------------------------------------------*/
+	
+	.grid_1,
+	.grid_2,
+	.grid_3,
+	.grid_4,
+	.grid_5,
+	.grid_6,
+	.grid_7,
+	.grid_8,
+	.grid_9,
+	.grid_10,
+	.grid_11,
+	.grid_12 {
+		float: right;
+	}
+	.alpha{
+		margin-left: 10px;
+		margin-right: 0;
+	}
+	.omega {
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	
+	.product-view > .alpha{
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	.product-view > .omega{
+		margin-left: 10px;
+		margin-right: 0;
+	}
+	
+	header#header h2.logo,
+	header#header h2.small_logo{
+		float: none;
+	}
+	header#header .header-top-right{
+		float: none;
+		text-align: center;
+	}
+	
+	.menu-button{float: right;}
+	.nav-container.mobile{
+		right: 0;
+		left: auto;
+	}
+	
+	header#header.floating .menu-button {float: left;}
+	
+	.sticky-cart header#header.floating .menu-button,
+	.sticky-search header#header.floating .menu-button{margin-left: 50px;}
+	.sticky-search.sticky-cart header#header.floating .menu-button{margin-left: 95px;}
+	
+	.sticky-cart header#header.floating .sticky-close-box .menu-button,
+	.sticky-search header#header.floating .sticky-close-box .menu-button{margin-left: 63px;}
+	.sticky-search.sticky-cart header#header.floating .sticky-close-box .menu-button {margin-left: 115px;}
+	
+	.sticky-search.sticky-cart header#header.floating .menu-button {margin-left: 95px;}
+	
+	header#header.floating .nav-container{
+		left: 0;
+		right: auto;
+	}
+	
+	
+	aside.sidebar .block.block-layered-nav dl dt h2,
+	.block-layered-nav dl#narrow-by-list2 dt h2{
+		text-align: center;
+	}
+	
+	.sidebar-off .toolbar .sidebar-button{float: left;}
+	
+	.col3-layout .sorter .view-mode{float: right;}
+	.col3-layout .toolbar .sorter a.desc,
+	.col3-layout .toolbar .sorter a.asc,
+	.col3-layout .toolbar .sorter .sort-by{
+		float: left;
+	}
+	.col3-layout .toolbar .sorter a.desc,
+	.col3-layout .toolbar .sorter a.asc{
+		margin-left: 4px;
+		margin-right: 0;
+	}
+	
+	#footer .footer-second-line .custom-footer-content ul.links li a:hover{
+		padding-left: 0;
+	}
+	#footer .footer-topline .custom-footer-content.features li i{
+		left: auto;
+		right: 0;
+	}
+	#footer .footer-topline .custom-footer-content.features li > div h3{
+		padding-right: 19px;
+		padding-left: 0;
+	}
+}
+
+/*  #Mobile (Portrait)
+================================================== */
+
+/* Note: Design for a width of 320px Gutter: 10px, Unit: 15px */
+@media only screen and (max-width: 767px) {
+	
+	header#header h2.logo,
+	header#header h2.small_logo{
+		float: none;
+		text-align: center;
+	}
+	header#header .header-top-right{
+		float: none;
+		text-align: center;
+	}
+	header#header.floating .menu-button{float: left;}
+	header#header #search_mini_form {margin-right: 0;}
+	header#header .top-cart{float: right;}
+	header#header .top-link-wishlist{float: right;}
+	header#header .top-link-wishlist .wishlist-items{margin-right: 3px;}
+	header#header .top-cart .block-title i{
+		display: inline;
+		float: none;
+		line-height: 1;
+	}
+	
+	header#header .customer-name span.user,
+	header#header .customer-name span.arrow{float: none;}
+	header#header .customer-name .arrow i{margin-right: 3px;}
+	header#header .customer-name + .links{
+		left: auto;
+		right: 0;
+	}
+	header#header .nav-container > ul .menu-item-button {right: auto;}
+	
+}
+
+/* #Mobile (Landscape)
+================================================== */
+
+/* Note: Design for a width of 480px */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.products-grid#upsell-product-table > li:nth-of-type(2n+2){
+		margin-right:10px;
+		margin-left: 0;
+	}
+	.products-grid#upsell-product-table > li:nth-of-type(2n+1){
+		clear:right;
+	}
+}

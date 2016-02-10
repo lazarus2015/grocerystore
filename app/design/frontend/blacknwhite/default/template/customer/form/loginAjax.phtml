@@ -1,0 +1,65 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2010-2014 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see Mage_Customer_Block_Form_Login
+ */
+?>
+<div class="account-login">
+	<div class="close-button"><i class="fa fa-times"></i></div>
+	<!-- <h1 style="margin-top:30px;" class="link-box"><a href="<?php echo Mage::getUrl('customer/account/create'); ?>"><?php echo $this->__('Register') ?></a></h1> -->
+	<div style="margin-top:30px;" class="link-box"><hr><a href="#"><?php echo $this->__('Register') ?></a><hr style="float:right"></div>
+	<div class="clear"></div>
+	<p>OR</p>
+	<?php echo $this->getLayout()->createBlock('inchoo_socialconnect/facebook_button')->setTemplate('inchoo/socialconnect/facebook/button.phtml')->toHtml(); ?>
+
+	<?php echo $this->getLayout()->createBlock('inchoo_socialconnect/google_button')->setTemplate('inchoo/socialconnect/google/button.phtml')->toHtml(); ?>
+	<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+		<?php echo $this->getBlockHtml('formkey'); ?>
+		
+		<ul class="form-list">
+			<li>
+				<div class="input-box">
+					<input type="text" name="login[username]" value="" id="email" placeholder="EMAIL" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+				</div>
+			</li>
+			<li>
+				<div class="input-box">
+					<input type="password" name="login[password]" value="" placeholder="PASSWORD" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+				</div>
+			</li>
+		</ul>
+		<div class="clear"></div>
+		<div class="buttons-set">
+				<div class="remember-me-custom">
+                	<?php echo $this->getChildHtml('persistent.remember.me'); ?>
+                </div>
+                <button type="submit" class="button btn-login" title="<?php echo $this->__('SIGN IN') ?>" name="send" id="send2"><span><span><?php echo $this->__('SIGN IN') ?></span></span></button>
+            </div>
+	</form>
+	<a style="color: red; margin-top:10px; display:block" href="<?php echo $this->getForgotPasswordUrl() ?>"><?php echo $this->__('Forgot Your Password?') ?></a>
+	<script type="text/javascript">
+		//<![CDATA[
+		var dataForm = new VarienForm('login-form', false);
+		//]]>
+		jQuery('.account-login .link-box a').on('click', function(){
+			<?php if (Mage::app()->getStore()->isCurrentlySecure()): ?>
+			ajaxLogin("<?php echo $this->getUrl('meigeeactions/register/', array('_secure'=>true)) ?>", true);
+		<?php else : ?>
+		ajaxLogin("<?php echo $this->getUrl('meigeeactions/register/', array('_secure'=>false)) ?>", true);
+	<?php endif; ?>
+	return false;
+});
+		titleDivider();
+		loginLabel();
+	</script>
+</div>

@@ -1,0 +1,39 @@
+<div class="over_hidden" style="margin-top: 10px;">
+	<?php
+	$categoyrId = 2;
+	$actualCategory1 = Mage::getModel('catalog/category')->load($categoyrId);
+	$subCategories1 = $actualCategory1->getChildren();//Mage::getModel('catalog/category')->getResource()->getAllChildren($actualCategory);
+	$i=0; $categories = array();
+	?>
+	<?php foreach (explode(',',$subCategories1) as $subCategoryId1): ?>
+		<?php
+		$actualCategory = Mage::getModel('catalog/category')->load($subCategoryId1);
+		$subCategories = $actualCategory->getChildren();
+		?>
+		<?php foreach (explode(',',$subCategories) as $subCategoryId): ?>
+			<?php $category = Mage::getModel('catalog/category')->load($subCategoryId); ?>
+            <?php array_push($categories,$category->getName()); ?>
+			
+	<?php endforeach;?>
+    <?php sort($categories);  ?>
+    <?php foreach($categories as $cat): ?>
+    <?php foreach (explode(',',$subCategories) as $subCategoryId): ?>
+			<?php $category = Mage::getModel('catalog/category')->load($subCategoryId); ?>
+			<?php ; if ($category->getIsActive() && $category->getThumbnail() && $cat == $category->getName() ):?>
+			<?php $i++; ?>          
+            
+			<div class="grid_2 omega <?php if($i%7 == 0){ echo 'clr'; $i=1; }?>">
+				<a href="<?php echo $category->getURL(); ?>">
+					<!-- <a href="http://grocerystore.litfdemo.com/shop-groceries/food.html"> -->
+					<img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt="" />
+					<h3><?php echo $category->getName(); ?></h3>
+				</a>
+			</div>
+		<?php endif;?>
+	<?php endforeach;
+	endforeach;?>  
+    
+<?php endforeach;?>
+<?php 
+//print_r($categories); ?>
+</div>

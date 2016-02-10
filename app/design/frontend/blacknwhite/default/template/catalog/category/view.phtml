@@ -1,0 +1,158 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+$_helper    = $this->helper('catalog/output');
+$_category  = $this->getCurrentCategory();
+
+$_imgHtml   = '';
+if ($_imgUrl = $_category->getImageUrl()) {
+    $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></p>';
+    $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+}
+?>
+<?php
+$catID = $_category->getID();
+$actualCategory = Mage::getModel('catalog/category')->load($catID);
+$subCategories = Mage::getModel('catalog/category')->getResource()->getAllChildren($actualCategory);
+?>
+<?php if(count($subCategories) != 1): ?>
+    <?php
+    array_shift($subCategories);
+    $subscats = 'bycatelogy';
+    $grid = 'grid_3';
+    $productPerPage = 4;
+    $totalPage = ceil(count($subCategories)/4);
+    $j=5;
+    $cateData = json_encode($subCategories);
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            pagenum = jQuery(".cate-page-num").val();
+            total = <?php echo $totalPage; ?> ;
+            jQuery(window).scroll(function(){
+                var wintop = jQuery(window).scrollTop(), docheight = jQuery(document).height(), winheight = jQuery(window).height();
+                var  scrolltrigger = 0.95;
+                
+                // if(pagenum == 2){
+                //     pagenum++;
+                // }
+                if  (pagenum < total && (wintop/(docheight-winheight)) > scrolltrigger) {
+                    getresult();
+                }
+            });
+            function getresult(url) {
+                pagenum = jQuery(".cate-page-num").val();
+                total = <?php echo $totalPage; ?> ;
+                url = '<?php echo Mage::getUrl('searchByBrand/index/scrollAjax') ?>';
+                    jQuery.ajax({
+                        url: url+'?pagenum='+pagenum,
+                        type: "GET",
+                        data:  {data:<?php echo $cateData;?>},
+                        beforeSend: function(){
+                            jQuery('.cate-loading').show();
+                            jQuery(".cate-page-num").val(Number(pagenum) + 1);
+                        },
+                        complete: function(){
+                            jQuery('.cate-loading').hide();
+                            
+                        },
+                        success: function(data){
+                            if  (pagenum < total) {
+                                jQuery("#cate-result").append(data);
+                            }
+                        },
+                        error: function(){}             
+                    });
+            
+            }
+        });
+        
+    </script>
+    <div id="cate-result" class="over_hidden <?php echo $subscats; ?>" style="margin-top: 10px; min-height: 300px;">
+        <?php
+        $i=0; $jj=0;
+        ?>
+        <?php foreach ($subCategories as $subCategoryId): ?>
+            <?php $category = Mage::getModel('catalog/category')->load($subCategoryId);  ?>
+            <?php ; if ($category->getIsActive() && $category->getThumbnail() ):?>
+            <?php $i++; ?>
+            <?php if($jj < 8): $jj++;?>
+                <div class="<?php echo $grid; ?> omega <?php if($i%$j == 0){ echo 'clr'; $i=1; }?>">
+                    <a href="<?php echo $category->getURL(); ?>">
+                        <img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt="" />
+                        <h3><?php echo $category->getName(); ?></h3>
+                    </a>
+                </div>
+            <?php endif;?>
+        <?php endif;?>
+    <?php endforeach;?>
+    <input type="hidden" value="2" class="cate-page-num">
+</div>
+<div class="cate-loading" style="display:none; width:100%; text-align:center"><img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" /></div>
+<?php else: ?>
+    <article>
+        <header class="page-title category-title">
+            <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+                <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
+            <?php endif; ?>
+            <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+        </header>
+
+        <?php echo $this->getChildHtml('catContainer'); ?>
+
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+        <?php if($_imgUrl): ?>
+            <?php echo $_imgHtml ?>
+        <?php endif; ?>
+
+        <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+            <div class="category-description std">
+                <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if($this->isContentMode()): ?>
+            <?php echo $this->getCmsBlockHtml() ?>
+
+        <?php elseif($this->isMixedMode()): ?>
+            <?php echo $this->getCmsBlockHtml() ?>
+            <?php echo $this->getProductListHtml() ?>
+
+        <?php else: ?>
+            <?php echo $this->getProductListHtml() ?>
+        <?php endif; ?>
+
+    </article>
+<?php endif;?>

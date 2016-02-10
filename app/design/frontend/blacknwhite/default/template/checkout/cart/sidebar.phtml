@@ -1,0 +1,60 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2010-2014 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+<div class="block block-cart">
+    <?php $_cartQty = $this->getSummaryCount() ?>
+    <div class="block-title">
+        <strong><span><?php echo $this->__('My Cart') ?></span></strong>
+    </div>
+    <div class="block-content">
+    <?php $_items = $this->getRecentItems() ?>
+    <?php if(count($_items)): ?>
+        <ol id="cart-sidebar" class="mini-products-list">
+        <?php foreach($_items as $_item): ?>
+            <?php echo $this->getItemHtml($_item) ?>
+        <?php endforeach; ?>
+        </ol>
+		<?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+		<div class="actions">
+			<?php if ($_cartQty>0): ?>
+				<div class="summary">
+					<p class="subtotal">
+						<span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+						<?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+							<br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+						<?php endif; ?>
+					</p>
+				</div>
+			<?php endif ?>
+			<?php echo $this->getChildHtml('extra_actions') ?>
+			<button type="button" title="<?php echo $this->__('Checkout') ?>" class="button" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+		</div>
+		<?php endif ?>
+        <script type="text/javascript">
+			decorateList('cart-sidebar', 'none-recursive');
+			cartProductRemove('#cart-sidebar li.item a.btn-remove', {
+				confirm: '<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>',
+				submit: '<?php echo $this->__('Ok') ?>',
+				calcel: '<?php echo $this->__('Cancel') ?>'
+			});
+		</script>
+    <?php else: ?>
+        <p class="empty"><?php echo $this->__('You currently have no items in your shopping cart.') ?></p>
+    <?php endif ?>
+    </div>
+</div>
+<?php endif;?>

@@ -1,0 +1,16 @@
+<?php 
+$alphas = range('A', 'Z');
+?>
+<div class="bynamebrand">
+  <h2>SEARCH BY NAME BRAND</h2>
+  <ul class="searchbrand">
+  	<?php foreach ($alphas as $v): ?>
+  		<li>
+  			<a href="<?php echo Mage::getUrl('searchByBrand').'?name='.$v; ?>" target="_blank">
+  			<!-- <a href="http://grocerystore.litfdemo.com/shop-groceries/food.html" target="_blank"> -->
+  				<?php echo $v ?>
+  			</a>
+  		</li>
+  	<?php endforeach; ?>
+  </ul>
+</div>

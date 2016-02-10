@@ -1,0 +1,205 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+ 
+function check_grid($grid_mode){
+	switch ($grid_mode) {
+		case 'grid': 
+			return '<i class="fa fa-th"></i>';
+		break;
+		case 'list':
+			return '<i class="fa fa-th-list"></i>';
+		break;
+	}
+}
+
+$meigee_blacknwhite_general = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('meigee_blacknwhite_general');
+$categoryComplete = Mage::getModel('catalog/category')->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId());
+
+if($categoryComplete->getSidebarhider()){
+	$sidebarhider = $categoryComplete->getSidebarhider();
+	if($sidebarhider == 2){$sidebarhider = 0;}
+} else {
+	$sidebarhider = $meigee_blacknwhite_general['productlisting']['sidebarhider'];
+}
+$isSidebarHided = $meigee_blacknwhite_general['productlisting']['sidebarhided'];
+
+?>
+<?php if($this->getCollection()->getSize()): ?>
+<nav class="toolbar">
+	<p class="amount alpha">
+		<?php if($this->getLastPageNum()>1): ?>
+			<?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+		<?php else: ?>
+			<strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+		<?php endif; ?>
+	</p>
+	<div class="pager">
+		<?php echo $this->getPagerHtml() ?>
+	</div>
+	<?php if( $this->isExpanded() ): ?>
+		<div class="sorter">
+			<?php if($sidebarhider): ?>
+				<div class="sidebar-button<?php if($isSidebarHided){echo ' open';} ?>"><i class="fa fa-arrows-h"></i><span class="open"><?php echo $this->__('Show Sidebar') ?></span><span class="close"><?php echo $this->__('Hide Sidebar') ?></span></div>
+			<?php endif; ?>
+			<?php if($this->isEnabledViewSwitcher()): ?>
+				<p class="view-mode">
+					<?php $_modes = $this->getModes(); ?>
+					<?php if($_modes && count($_modes)>1): ?>
+					<label><?php echo $this->__('View as') ?>:</label>
+					<?php foreach ($this->getModes() as $_code=>$_label): ?>
+						<?php if($this->isModeActive($_code)): ?>
+							<strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo check_grid(strtolower($_code)) ?></strong>
+						<?php else: ?>
+							<a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo check_grid(strtolower($_code)) ?></a>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</p>
+			<?php endif; ?>
+			<div class="sort-by">
+				<label><?php echo $this->__('Sort By') ?></label>
+				<select class="sort-item">
+				<?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+					<option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+						<?php echo $this->__($_order) ?>
+					</option>
+				<?php endforeach; ?>
+				</select>
+			</div>
+			<?php if($this->getCurrentDirection() == 'desc'): ?>
+				<a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" class="asc" title="<?php echo $this->__('Set Ascending Direction') ?>"><i class="fa fa-sort-amount-asc"></i></a>
+			<?php else: ?>
+				<a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" class="desc" title="<?php echo $this->__('Set Descending Direction') ?>"><i class="fa fa-sort-amount-desc"></i></a>
+			<?php endif; ?>
+			
+			<div class="limiter">
+				<label><?php echo $this->__('Show') ?>:</label>
+				<ul>
+					<?php $limiter_item = 1; $max_limiter_item = count($this->getAvailableLimit()); foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+						<?php $keywords = array("&amp;ajaxtoolbar=1", "ajaxtoolbar=1&amp;"); ?>
+						<li <?php if($limiter_item == $max_limiter_item){echo 'class="last"';} ?>><a href="<?php echo str_replace($keywords, "", $this->getLimitUrl($_key)); ?>"<?php if($this->isLimitCurrent($_key)): ?> class="selected"<?php endif ?>><?php echo $_limit ?></a></li>
+					<?php $limiter_item++; endforeach; ?>
+				</ul>
+				<?php //echo $this->__('per page') ?>
+			</div>
+		</div>
+	<?php endif; ?>
+</nav>
+<script type="text/javascript">
+	if(!jQuery(".toolbar .sbHolder").length){
+		jQuery(".toolbar select").selectbox();
+		jQuery('.toolbar .sbSelector').each(function(){
+			if(!jQuery(this).find('span.text').length){
+				jQuery(this).wrapInner('<span class="text" />').append('<span />').find('span:last').wrapInner('<span />');
+			}
+		});
+	}
+	
+	jQuery('select.sort-item').each(function(){
+		if(!jQuery(this).hasClass('active')){
+			jQuery(this).addClass('active');
+			jQuery(this).change(function(){
+				setLocation(jQuery(this).val());
+			});
+		}
+	});
+	
+	<?php if($sidebarhider): ?>
+	jQuery(document).ready(function(){
+		/* Sidebar Hide */
+		function sidebarHide(){
+			if(!jQuery('.main-container.col1-layout').length){
+				mainContainer = jQuery('.main-container');
+				
+				button = jQuery('.toolbar .sidebar-button');
+				if(button.length){
+					sidebars = jQuery('.sidebar');
+					colMain = jQuery('.col-main');
+					
+					if(jQuery('.main-container.col3-layout').length){
+						oroginalGrid = 'grid_6';
+					}else{
+						oroginalGrid = 'grid_9';
+					}
+					
+					if(jQuery('#products-list').length){
+						listCol = jQuery('#products-list li.item .right-col');
+						listColClasses = listCol.attr('class');
+					}
+					
+					if(sidebars.css('display') == 'block' || sidebars.css('display') == 'inline'){
+						button.removeClass('open');
+					}
+					
+					button.off().on('click', function(){
+						
+						isVisible = false;
+						if(sidebars.css('display') == 'block' || sidebars.css('display') == 'inline'){
+							isVisible = true;
+						}
+						
+						if(isVisible){
+							sidebars.fadeOut('fast');
+							colMain.attr('class', colMain.attr('class').replace(/grid_9|grid_6/ig, 'grid_12'));
+							mainContainer.addClass('sidebar-off');
+							
+							if(jQuery('#products-list').length){
+								jQuery('#products-list li.item .right-col').attr('class', 'omega right-col grid_9');
+							}
+							button.addClass('open');
+							setTimeout(function(){
+								jQuery(window).trigger('resize');
+							}, 500);
+
+						}else{
+							sidebars.fadeIn('fast');
+							colMain.attr('class', colMain.attr('class').replace(/grid_12/i, oroginalGrid));
+							mainContainer.removeClass('sidebar-off');
+							
+							if(jQuery('#products-list').length){
+								jQuery('#products-list li.item .right-col').attr('class', listColClasses);
+							}
+							button.removeClass('open');
+							setTimeout(function(){
+								jQuery(window).trigger('resize');
+							}, 500);
+						}
+					});
+				}
+			}
+		}
+		sidebarHide();
+	});
+	<?php endif; ?>
+</script>
+<?php endif ?>

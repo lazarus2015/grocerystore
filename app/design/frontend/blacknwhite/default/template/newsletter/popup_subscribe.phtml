@@ -1,0 +1,154 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2010-2014 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php 
+
+$meigee_blacknwhite_general = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('meigee_blacknwhite_general');
+$expires = $meigee_blacknwhite_general['newsletter']['cookielifetime'];
+$mediaurl = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('mediaurl');
+$wrapper = '';
+if(isset($meigee_blacknwhite_general['newsletter']['background'])){
+	$bg = $meigee_blacknwhite_general['newsletter']['background'];
+	$wrapper = $mediaurl.$bg;
+}else{
+	$bg = 0;
+}
+$wrapperX2 = '';
+if(isset($meigee_blacknwhite_general['newsletter']['background_retina'])){
+	$bgX2 = $meigee_blacknwhite_general['newsletter']['background_retina'];
+	$wrapperX2 = $mediaurl.$bgX2;
+}else{
+	$bgX2 = 0;
+}
+
+$bgOption = $meigee_blacknwhite_general['newsletter']['bgoption'];
+switch($bgOption){
+	case 0:
+		$bgOption = "background-position: left top";
+	break;
+	case 1:
+		$bgOption = "background-position: right top";
+	break;
+	case 2:
+		$bgOption = "background-position: center top";
+	break;
+	case 3:
+		$bgOption = "background-size: cover";
+	break;
+}
+$popupWidth = $meigee_blacknwhite_general['newsletter']['popupwidth'];
+$popupHeight = $meigee_blacknwhite_general['newsletter']['popupheight'];
+
+$newsletterCookie = Mage::getModel('core/cookie')->get("blacknwhiteSubscribe");
+if(!$newsletterCookie): ?>
+	<section class="block-subscribe-popup" id="popup-newsletter" style="width:<?php echo $popupWidth; ?>px; height:<?php echo $popupHeight; ?>px; <?php echo $bgOption.';'; if($bg){echo ' background-image:url('.$wrapper.');';} ?>"<?php if($bgX2){echo ' datax2="url('.$wrapperX2.')"';} ?>>
+		<div class="indent">
+			<h3><?php echo $this->__('Newsletter'); ?></h3> 
+			<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="popup-newsletter-validate-detail">
+				<div class="block-content">
+					<label for="newsletter"><?php echo $this->__('Subscribe to the Black & White mailing list to receive updates on new arrivals, special offers and other discount information.') ?></label>
+					<div class="input-box">
+						<input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" />
+						<button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+						<div class="clear"></div>
+					</div>
+					<label class="subscribe-bottom"><input type="checkbox"><?php echo $this->__('Don’t show this popup again'); ?></label>
+				</div>
+			</form>
+			<script type="text/javascript">
+			//<![CDATA[
+				var popupNewsletterSubscriberFormDetail = new VarienForm('popup-newsletter-validate-detail');
+			//]]>
+			</script>
+		</div>
+		<div class="clear"></div>
+	</section>
+	<script type="text/javascript">
+		/* Retina wrapper */
+		if (jQuery('body').hasClass('retina-ready')) {
+			if (pixelRatio > 1) {
+				sectionX2 = jQuery('section#popup-newsletter[datax2]');
+				if(sectionX2.length){
+					sectionX2.css({
+						'background-image': sectionX2.attr('datax2'),
+					});
+				}
+				section = jQuery('section#popup-newsletter');
+				if(section.css('background-size').indexOf('cover') == -1){
+					imgUrl = section.css('background-image').replace(/url\(|\)|\"/ig, '');
+					img = new Image;
+					img.src = imgUrl;
+					img.onload = function(){
+						section.css('background-size', img.width/2+'px');
+					}
+				}
+			}
+		}
+		
+		/* Newsletter init */
+		function popupNewsletter() {
+			jQuery.fancybox({
+				padding: '0px',
+				autoScale: true,
+				transitionIn: 'fade',
+				transitionOut: 'fade',
+				showCloseButton: false,
+				type: 'inline',
+				href: '#popup-newsletter'
+			});
+			jQuery('#popup-newsletter').trigger('click');
+		}
+		
+		
+		isSuccess = jQuery('ul.messages li.success-msg').length;
+		subscribeFlag = jQuery.cookie('blacknwhiteSubscribeFlag');
+		
+		function subsSetcookie(){
+			jQuery.cookie('blacknwhiteSubscribe', 'true', {
+				expires: <?php echo $expires; ?>,
+				path: '/'
+			});
+		}
+		
+		if(!(subscribeFlag && isSuccess)){
+			popupNewsletter();
+		}else{
+			jQuery.removeCookie('blacknwhiteSubscribeFlag', { path: '/' });
+			subsSetcookie();
+		}
+		
+		jQuery('#popup-newsletter').parents('.fancybox-wrap').addClass('subscribe-fancy').next('.fancybox-overlay').addClass('subscribe-fancy');
+		
+		jQuery('#popup-newsletter .subscribe-bottom input').on('click', function(){
+			if(jQuery(this).parent().find('input:checked').length){
+				subsSetcookie();
+			} else {
+				jQuery.removeCookie('blacknwhiteSubscribe', { path: '/' });
+			}
+		});
+		
+		jQuery('#popup-newsletter .input-box button.button').on('click', function(){
+			var button = jQuery(this);
+			setTimeout(function(){
+				if(!button.parent().find('input#newsletter').hasClass('validation-failed')){
+					jQuery.cookie('blacknwhiteSubscribeFlag', 'true', {
+						path: '/'
+					});
+				}
+			}, 500);
+		});
+		
+		setTimeout(function(){
+			jQuery('.fancybox-close').on('click', function(){
+				jQuery.cookie('blacknwhiteSubscribe', 'true');
+			});
+		}, 1000);
+		
+	</script> 
+<?php endif;

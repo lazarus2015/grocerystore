@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * InfiniteScroll - Magento Integration
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0),
+ * available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * @category   Strategery
+ * @package    Strategery_Infinitescroll
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @copyright  Copyright (c) 2011 Strategery Inc. (http://usestrategery.com)
+ * 
+ * @author     Gabriel Somoza (me@gabrielsomoza.com)
+ * @link       http://gabrielsomoza.com/
+ * 
+ * Update 2.0.0
+ * @author     Damian A. Pastorini (admin@dwdesigner.com)
+ * @link       http://www.dwdesigner.com/
+ */
+-->
+<config>
+    <modules>
+        <Strategery_Infinitescroll>
+            <version>3.0.1</version>
+        </Strategery_Infinitescroll>
+    </modules>
+    <global>
+        <helpers>
+            <infinitescroll>
+                <class>Strategery_Infinitescroll_Helper</class>
+            </infinitescroll>
+        </helpers>
+        <blocks>
+            <infinitescroll>
+                <class>Strategery_Infinitescroll_Block</class>
+            </infinitescroll>
+        </blocks>        
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <infinitescroll>
+                    <file>strategery-infinitescroll.xml</file>
+                </infinitescroll>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <infinitescroll>
+            <general>
+                <enabled>1</enabled>
+            </general>
+            <instances>
+                <grid>1</grid>
+                <layer>1</layer>
+                <search>1</search>
+                <advanced>1</advanced>
+            </instances>
+            <design>
+                <hide_toolbar>0</hide_toolbar>
+                <animate>0</animate>
+                <extra_scroll_px>150</extra_scroll_px>
+                <buffer_px>50</buffer_px>
+                <load_more_threshold>2</load_more_threshold>
+            </design>
+            <memory>
+                <enabled>0</enabled>
+            </memory>
+        </infinitescroll>
+    </default>
+</config>

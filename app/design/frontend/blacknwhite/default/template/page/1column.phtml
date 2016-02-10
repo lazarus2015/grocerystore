@@ -1,0 +1,139 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2010-2014 MeigeeTeam. (http://www.meigeeteam.com)
+ *
+ *
+ *
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<?php echo $this->getChildHtml('global_notices') ?>
+<?php echo $this->getChildHtml('header') ?>
+<?php if (Mage::getSingleton('cms/page')->getIdentifier() != 'home') { ?>
+    <div class="content-wrapper">
+        <div class="<?php if(!Mage::registry('current_product') && Mage::getSingleton('cms/page')->getIdentifier() != 'shop-groceries'): ?>container_12<?php endif; ?>">
+            <div class="main-container col1-layout <?php if (Mage::getSingleton('cms/page')->getIdentifier() == 'shop-groceries'): ?>shop-groceries<?php endif; ?>">
+             <!--<div class="<?php if(Mage::registry('current_product')): ?>container_12<?php endif; ?>">
+             <div class="grid_12">
+                 <?php echo $this->getChildHtml('breadcrumbs') ?>
+             </div>
+             </div>-->
+             <div class="clear">
+
+             </div>
+             <div class="<?php if(!Mage::registry('current_product') && Mage::getSingleton('cms/page')->getIdentifier() != 'shop-groceries'): ?>grid_12<?php endif; ?> col-main">
+                <?php echo $this->getChildHtml('global_messages') ?>
+                <?php echo $this->getChildHtml('content') ?>
+                
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <?php 
+	 
+	if (Mage::getSingleton('cms/page')->getIdentifier() == 'shop-groceries'){ ?>
+    <div class="bycatelogy">
+      <h2>SEARCH BY CATEGORY</h2>
+      <?php echo $this->getChildHtml('blacknwhite_home_cat') ?>
+  </div>
+  <?php echo $this->getChildHtml('blacknwhite_home_brand') ?>
+  <?php } ?>
+
+</div>
+ <?php  $request = $this->getRequest();
+ $module = $request->getModuleName();
+ $controller = $request->getControllerName();
+ $action = $request->getActionName();
+ if( ($module == 'checkout' && $controller == 'cart' && $action == 'index') || (Mage::registry('current_product')) )
+ {
+   //Cart Page
+   echo '<div class="onsale-cart"><div class="container_12">';
+   echo $this->getChildHtml('onsale');
+   echo '</div></div>';
+ }
+?>
+<?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('global_cookie_notice') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+
+<?php }else{ ?>
+<div class="header_home"></div>
+<div class="fullscreen background" data-img-width="1600" data-img-height="1064">
+    <a href="#" class="alogo"><?php echo $this->getChildHtml('blacknwhite_home_logo') ?></a>
+    <div class="content-a">
+        <div class="content-b">
+            <?php echo $this->getChildHtml('content'); ?>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+<?php echo $this->getAbsoluteFooter() ?>
+
+<script type="text/javascript">
+    /* fix vertical when not overflow
+    call fullscreenFix() if .fullscreen content changes */
+    function fullscreenFix(){
+        var h = jQuery('body').height();
+    // set .fullscreen height
+    jQuery(".content-b").each(function(i){
+        if(jQuery(this).innerHeight() <= h){
+            jQuery(this).closest(".fullscreen").addClass("not-overflow");
+        }
+    });
+}
+jQuery(window).resize(fullscreenFix);
+fullscreenFix();
+
+/* resize background images */
+function backgroundResize(){
+    var windowH = jQuery(window).height();
+    jQuery(".background").each(function(i){
+        var path = jQuery(this);
+        // variables
+        var contW = path.width();
+        var contH = path.height();
+        var imgW = path.attr("data-img-width");
+        var imgH = path.attr("data-img-height");
+        var ratio = imgW / imgH;
+        // overflowing difference
+        var diff = parseFloat(path.attr("data-diff"));
+        diff = diff ? diff : 0;
+        // remaining height to have fullscreen image only on parallax
+        var remainingH = 0;
+        if(path.hasClass("parallax")){
+            var maxH = contH > windowH ? contH : windowH;
+            remainingH = windowH - contH;
+        }
+        // set img values depending on cont
+        imgH = contH + remainingH + diff;
+        imgW = imgH * ratio;
+        // fix when too large
+        if(contW > imgW){
+            imgW = contW;
+            imgH = imgW / ratio;
+        }
+        //
+        path.data("resized-imgW", imgW);
+        path.data("resized-imgH", imgH);
+        path.css("background-size", imgW + "px " + imgH + "px");
+    });
+}
+jQuery(window).resize(backgroundResize);
+jQuery(window).focus(backgroundResize);
+backgroundResize();
+</script>
+
+</body>
+</html>

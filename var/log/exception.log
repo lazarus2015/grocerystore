@@ -1,0 +1,76 @@
+2016-02-05T09:39:59+00:00 ERR (3): 
+exception 'Varien_Exception' with message 'Invalid method Mage_Catalog_Model_Category::addAttributeToSelect(Array
+(
+    [0] => name
+)
+)' in /home/litfdemo/public_html/grocerystore/lib/Varien/Object.php:653
+Stack trace:
+#0 /home/litfdemo/public_html/grocerystore/app/design/frontend/blacknwhite/default/template/efedesign/categories.phtml(10): Varien_Object->__call('addAttributeToS...', Array)
+#1 /home/litfdemo/public_html/grocerystore/app/design/frontend/blacknwhite/default/template/efedesign/categories.phtml(10): Mage_Catalog_Model_Category->addAttributeToSelect('name')
+#2 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(241): include('/home/litfdemo/...')
+#3 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/blackn...')
+#4 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#5 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#6 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/Email/Template/Filter.php(196): Mage_Core_Block_Abstract->toHtml()
+#7 [internal function]: Mage_Core_Model_Email_Template_Filter->blockDirective(Array)
+#8 /home/litfdemo/public_html/grocerystore/lib/Varien/Filter/Template.php(163): call_user_func(Array, Array)
+#9 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/Email/Template/Filter.php(548): Varien_Filter_Template->filter('{{block type="c...')
+#10 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/Block/Block.php(69): Mage_Core_Model_Email_Template_Filter->filter('{{block type="c...')
+#11 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Cms_Block_Block->_toHtml()
+#12 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(637): Mage_Core_Block_Abstract->toHtml()
+#13 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(581): Mage_Core_Block_Abstract->_getChildHtml('blacknwhite_hom...', true)
+#14 /home/litfdemo/public_html/grocerystore/app/design/frontend/blacknwhite/default/template/page/1column.phtml(48): Mage_Core_Block_Abstract->getChildHtml('blacknwhite_hom...')
+#15 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(241): include('/home/litfdemo/...')
+#16 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/blackn...')
+#17 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#18 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#19 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/Layout.php(555): Mage_Core_Block_Abstract->toHtml()
+#20 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Action.php(390): Mage_Core_Model_Layout->getOutput()
+#21 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/Helper/Page.php(137): Mage_Core_Controller_Varien_Action->renderLayout()
+#22 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/Helper/Page.php(52): Mage_Cms_Helper_Page->_renderPage(Object(Mage_Cms_PageController), '16')
+#23 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/controllers/PageController.php(45): Mage_Cms_Helper_Page->renderPage(Object(Mage_Cms_PageController), '16')
+#24 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Cms_PageController->viewAction()
+#25 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#26 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#27 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#28 /home/litfdemo/public_html/grocerystore/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#29 /home/litfdemo/public_html/grocerystore/index.php(83): Mage::run('', 'store')
+#30 {main}
+2016-02-05T09:59:21+00:00 ERR (3): 
+exception 'Varien_Exception' with message 'Invalid method Mage_Catalog_Model_Category::addAttributeToSelect(Array
+(
+    [0] => name
+)
+)' in /home/litfdemo/public_html/grocerystore/lib/Varien/Object.php:653
+Stack trace:
+#0 /home/litfdemo/public_html/grocerystore/app/design/frontend/blacknwhite/default/template/efedesign/categories.phtml(10): Varien_Object->__call('addAttributeToS...', Array)
+#1 /home/litfdemo/public_html/grocerystore/app/design/frontend/blacknwhite/default/template/efedesign/categories.phtml(10): Mage_Catalog_Model_Category->addAttributeToSelect('name')
+#2 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(241): include('/home/litfdemo/...')
+#3 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/blackn...')
+#4 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#5 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#6 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/Email/Template/Filter.php(196): Mage_Core_Block_Abstract->toHtml()
+#7 [internal function]: Mage_Core_Model_Email_Template_Filter->blockDirective(Array)
+#8 /home/litfdemo/public_html/grocerystore/lib/Varien/Filter/Template.php(163): call_user_func(Array, Array)
+#9 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/Email/Template/Filter.php(548): Varien_Filter_Template->filter('{{block type="c...')
+#10 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/Block/Block.php(69): Mage_Core_Model_Email_Template_Filter->filter('{{block type="c...')
+#11 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Cms_Block_Block->_toHtml()
+#12 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(637): Mage_Core_Block_Abstract->toHtml()
+#13 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(581): Mage_Core_Block_Abstract->_getChildHtml('blacknwhite_hom...', true)
+#14 /home/litfdemo/public_html/grocerystore/app/design/frontend/blacknwhite/default/template/page/1column.phtml(48): Mage_Core_Block_Abstract->getChildHtml('blacknwhite_hom...')
+#15 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(241): include('/home/litfdemo/...')
+#16 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/blackn...')
+#17 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#18 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#19 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/Layout.php(555): Mage_Core_Block_Abstract->toHtml()
+#20 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Action.php(390): Mage_Core_Model_Layout->getOutput()
+#21 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/Helper/Page.php(137): Mage_Core_Controller_Varien_Action->renderLayout()
+#22 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/Helper/Page.php(52): Mage_Cms_Helper_Page->_renderPage(Object(Mage_Cms_PageController), '16')
+#23 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Cms/controllers/PageController.php(45): Mage_Cms_Helper_Page->renderPage(Object(Mage_Cms_PageController), '16')
+#24 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Cms_PageController->viewAction()
+#25 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#26 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#27 /home/litfdemo/public_html/grocerystore/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#28 /home/litfdemo/public_html/grocerystore/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#29 /home/litfdemo/public_html/grocerystore/index.php(83): Mage::run('', 'store')
+#30 {main}

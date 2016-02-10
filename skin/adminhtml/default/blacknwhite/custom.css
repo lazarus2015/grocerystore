@@ -1,0 +1,496 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_blank
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+select#meigee_theming_paterns_patern option[value="first_aid_kit"] {
+	background:url(images/paterns/first_aid_kit.png) 0 0 no-repeat;
+	width:20px;
+	height:20px;
+	padding: 0 0 0 0;
+	text-indent:-999em;
+	float: left;
+}
+select#meigee_theming_paterns_patern option[value="light_wool"] {
+	background:url(images/paterns/light_wool.png) 0 0 no-repeat;
+	width:20px;
+	height:20px;
+	padding: 0 0 0 0;
+	width:20px;
+	text-indent:-999em;
+	float: left;
+}
+
+/*********************************************************************/
+#meigee_blacknwhite_general_appearance table,
+#meigee_blacknwhite_general_layout table,
+#meigee_blacknwhite_general_menu table,
+#meigee_blacknwhite_general_customlogo table,
+#meigee_blacknwhite_general_lang_switcher table,
+#meigee_blacknwhite_general_curr_switcher table,
+#meigee_blacknwhite_general_fancybox table,
+#meigee_blacknwhite_general_rollover table,
+#meigee_blacknwhite_general_otheroptions table,
+#meigee_blacknwhite_productpage_general table,
+#meigee_blacknwhite_productpage_layout table,
+#meigee_blacknwhite_productpage_brand table,
+#meigee_blacknwhite_productpage_additional table,
+#meigee_blacknwhite_sidebar_block_categories table,
+#meigee_blacknwhite_sidebar_block_shop_by table,
+#meigee_blacknwhite_sidebar_block_compare table,
+#meigee_blacknwhite_sidebar_block_compared table,
+#meigee_blacknwhite_sidebar_block_viewed table,
+#meigee_blacknwhite_sidebar_block_wishlist table,
+#meigee_blacknwhite_sidebar_block_tags table,
+#meigee_blacknwhite_sidebar_block_orders table,
+#meigee_blacknwhite_sidebar_block_subscribe table,
+#headerslider_coin table,
+#meigee_blacknwhite_bgslider_slides table,
+#meigee_blacknwhite_bgslider_slideroptions table,
+
+#meigee_blacknwhite_design_appearance table,
+#meigee_blacknwhite_design_icons table,
+#meigee_blacknwhite_design_base table,
+#meigee_blacknwhite_design_menu table,
+#meigee_blacknwhite_design_catlabels table,
+#meigee_blacknwhite_design_header table,
+#meigee_blacknwhite_design_headerslider table,
+#meigee_blacknwhite_design_parallax table,
+#meigee_blacknwhite_design_content table,
+#meigee_blacknwhite_design_page_not_found table,
+#meigee_blacknwhite_design_buttons table,
+#meigee_blacknwhite_design_products table,
+#meigee_blacknwhite_design_social_links table,
+#meigee_blacknwhite_design_footer table,
+
+#meigee_blacknwhite_general_header table,
+#meigee_blacknwhite_general_footer table,
+#meigee_blacknwhite_general_mycart table,
+#meigee_blacknwhite_general_toplinks table,
+#meigee_blacknwhite_general_newsletter table,
+#meigee_blacknwhite_general_productlisting table,
+#meigee_blacknwhite_general_productimages table,
+#meigee_blacknwhite_general_productlabels table,
+#meigee_blacknwhite_general_loginajax table,
+#meigee_blacknwhite_general_contactmap table,
+#meigee_blacknwhite_general_contactmap table
+{
+	border-spacing:0 5px !important;
+}
+#meigee_blacknwhite_general_appearance table td,
+#meigee_blacknwhite_general_layout table td,
+#meigee_blacknwhite_general_menu table td,
+#meigee_blacknwhite_general_customlogo td,
+#meigee_blacknwhite_general_lang_switcher table td,
+#meigee_blacknwhite_general_curr_switcher table td,
+#meigee_blacknwhite_general_fancybox table td,
+#meigee_blacknwhite_general_rollover table td,
+#meigee_blacknwhite_general_otheroptions table td,
+#meigee_blacknwhite_productpage_general table td,
+#meigee_blacknwhite_productpage_layout table td,
+#meigee_blacknwhite_productpage_brand table td,
+#meigee_blacknwhite_productpage_additional table td,
+#meigee_blacknwhite_sidebar_block_categories table td,
+#meigee_blacknwhite_sidebar_block_shop_by table td,
+#meigee_blacknwhite_sidebar_block_compare table td,
+#meigee_blacknwhite_sidebar_block_compared table td,
+#meigee_blacknwhite_sidebar_block_viewed table td,
+#meigee_blacknwhite_sidebar_block_wishlist table td,
+#meigee_blacknwhite_sidebar_block_tags table td,
+#meigee_blacknwhite_sidebar_block_orders table td,
+#meigee_blacknwhite_sidebar_block_subscribe table td,
+#headerslider_coin table td,
+#meigee_blacknwhite_bgslider_slides td,
+#meigee_blacknwhite_bgslider_slideroptions td,
+
+#meigee_blacknwhite_design_appearance table td,
+#meigee_blacknwhite_design_icons table td,
+#meigee_blacknwhite_design_base table td,
+#meigee_blacknwhite_design_menu table td,
+#meigee_blacknwhite_design_catlabels table td,
+#meigee_blacknwhite_design_header table td,
+#meigee_blacknwhite_design_headerslider table td,
+#meigee_blacknwhite_design_parallax table td,
+#meigee_blacknwhite_design_content table td,
+#meigee_blacknwhite_design_page_not_found table td,
+#meigee_blacknwhite_design_buttons table td,
+#meigee_blacknwhite_design_products table td,
+#meigee_blacknwhite_design_social_links table td,
+#meigee_blacknwhite_design_footer table td,
+
+#meigee_blacknwhite_general_header table td,
+#meigee_blacknwhite_general_footer table td,
+#meigee_blacknwhite_general_mycart table td,
+#meigee_blacknwhite_general_toplinks table td,
+#meigee_blacknwhite_general_newsletter table td,
+#meigee_blacknwhite_general_productlisting table td,
+#meigee_blacknwhite_general_productimages table td,
+#meigee_blacknwhite_general_productlabels table td,
+#meigee_blacknwhite_general_loginajax table td,
+#meigee_blacknwhite_general_contactmap table td,
+#meigee_blacknwhite_general_contactmap table td
+{ 
+	padding: 20px !important;
+}
+#meigee_blacknwhite_general_appearance td.label,
+#meigee_blacknwhite_general_layout td.label,
+#meigee_blacknwhite_general_menu td.label,
+#meigee_blacknwhite_general_customlogo td.label,
+#meigee_blacknwhite_general_lang_switcher td.label,
+#meigee_blacknwhite_general_curr_switcher td.label,
+#meigee_blacknwhite_general_fancybox td.label,
+#meigee_blacknwhite_general_rollover td.label,
+#meigee_blacknwhite_general_otheroptions td.label,
+#meigee_blacknwhite_productpage_general td.label,
+#meigee_blacknwhite_productpage_layout td.label,
+#meigee_blacknwhite_productpage_brand td.label,
+#meigee_blacknwhite_productpage_additional td.label,
+#meigee_blacknwhite_sidebar_block_categories td.label,
+#meigee_blacknwhite_sidebar_block_shop_by td.label,
+#meigee_blacknwhite_sidebar_block_compare td.label,
+#meigee_blacknwhite_sidebar_block_compared td.label,
+#meigee_blacknwhite_sidebar_block_viewed td.label,
+#meigee_blacknwhite_sidebar_block_wishlist td.label,
+#meigee_blacknwhite_sidebar_block_tags td.label,
+#meigee_blacknwhite_sidebar_block_orders td.label,
+#meigee_blacknwhite_sidebar_block_subscribe td.label,
+#headerslider_coin td.label,
+#meigee_blacknwhite_bgslider_slides td.label,
+#meigee_blacknwhite_bgslider_slideroptions td.label,
+
+#meigee_blacknwhite_design_appearance table td.label,
+#meigee_blacknwhite_design_icons table td.label,
+#meigee_blacknwhite_design_base table td.label,
+#meigee_blacknwhite_design_menu table td.label,
+#meigee_blacknwhite_design_catlabels table td.label,
+#meigee_blacknwhite_design_header table td.label,
+#meigee_blacknwhite_design_headerslider table td.label,
+#meigee_blacknwhite_design_parallax table td.label,
+#meigee_blacknwhite_design_content table td.label,
+#meigee_blacknwhite_design_page_not_found table td.label,
+#meigee_blacknwhite_design_buttons table td.label,
+#meigee_blacknwhite_design_products table td.label,
+#meigee_blacknwhite_design_social_links table td.label,
+#meigee_blacknwhite_design_footer table td.label,
+
+#meigee_blacknwhite_general_header table td.label,
+#meigee_blacknwhite_general_footer table td.label,
+#meigee_blacknwhite_general_mycart table td.label,
+#meigee_blacknwhite_general_toplinks table td.label,
+#meigee_blacknwhite_general_newsletter table td.label,
+#meigee_blacknwhite_general_productlisting table td.label,
+#meigee_blacknwhite_general_productimages table td.label,
+#meigee_blacknwhite_general_productlabels table td.label,
+#meigee_blacknwhite_general_loginajax table td.label,
+#meigee_blacknwhite_general_contactmap table td.label,
+#meigee_blacknwhite_general_contactmap table td.label
+{
+	background: #f5f5f5 !important;
+	border:1px solid #ebebeb !important;
+	border-right:none !important;
+	font-weight:bold;
+}
+#meigee_blacknwhite_general_appearance td.value,
+#meigee_blacknwhite_general_layout td.value,
+#meigee_blacknwhite_general_menu td.value,
+#meigee_blacknwhite_general_customlogo td.value,
+#meigee_blacknwhite_general_lang_switcher td.value,
+#meigee_blacknwhite_general_curr_switcher td.value,
+#meigee_blacknwhite_general_fancybox td.value,
+#meigee_blacknwhite_general_rollover td.value,
+#meigee_blacknwhite_general_otheroptions td.value,
+#meigee_blacknwhite_productpage_general td.value,
+#meigee_blacknwhite_productpage_layout td.value,
+#meigee_blacknwhite_productpage_brand td.value,
+#meigee_blacknwhite_productpage_additional td.value,
+#meigee_blacknwhite_sidebar_block_categories td.value,
+#meigee_blacknwhite_sidebar_block_shop_by td.value,
+#meigee_blacknwhite_sidebar_block_compare td.value,
+#meigee_blacknwhite_sidebar_block_compared td.value,
+#meigee_blacknwhite_sidebar_block_viewed td.value,
+#meigee_blacknwhite_sidebar_block_wishlist td.value,
+#meigee_blacknwhite_sidebar_block_tags td.value,
+#meigee_blacknwhite_sidebar_block_orders td.value,
+#meigee_blacknwhite_sidebar_block_subscribe td.value,
+#headerslider_coin td.value,
+#meigee_blacknwhite_bgslider_slides td.value,
+#meigee_blacknwhite_bgslider_slideroptions td.value,
+
+#meigee_blacknwhite_design_appearance table td.value,
+#meigee_blacknwhite_design_icons table td.value,
+#meigee_blacknwhite_design_base table td.value,
+#meigee_blacknwhite_design_menu table td.value,
+#meigee_blacknwhite_design_catlabels table td.value,
+#meigee_blacknwhite_design_header table td.value,
+#meigee_blacknwhite_design_headerslider table td.value,
+#meigee_blacknwhite_design_parallax table td.value,
+#meigee_blacknwhite_design_content table td.value,
+#meigee_blacknwhite_design_page_not_found table td.value,
+#meigee_blacknwhite_design_buttons table td.value,
+#meigee_blacknwhite_design_products table td.value,
+#meigee_blacknwhite_design_social_links table td.value,
+#meigee_blacknwhite_design_footer table td.value,
+
+#meigee_blacknwhite_general_header table td.value,
+#meigee_blacknwhite_general_footer table td.value,
+#meigee_blacknwhite_general_mycart table td.value,
+#meigee_blacknwhite_general_toplinks table td.value,
+#meigee_blacknwhite_general_newsletter table td.value,
+#meigee_blacknwhite_general_productlisting table td.value,
+#meigee_blacknwhite_general_productimages table td.value,
+#meigee_blacknwhite_general_productlabels table td.value,
+#meigee_blacknwhite_general_loginajax table td.value,
+#meigee_blacknwhite_general_contactmap table td.value,
+#meigee_blacknwhite_general_contactmap table td.value
+{
+	width:400px;
+	background: #f5f5f5 !important;
+	border:1px solid #ebebeb !important;
+	border-left:none !important;
+	border-right:none !important;
+}
+#meigee_blacknwhite_general_appearance td.scope-label,
+#meigee_blacknwhite_general_layout td.scope-label,
+#meigee_blacknwhite_general_menu td.scope-label,
+#meigee_blacknwhite_general_customlogo td.scope-label,
+#meigee_blacknwhite_general_lang_switcher td.scope-label,
+#meigee_blacknwhite_general_curr_switcher td.scope-label,
+#meigee_blacknwhite_general_fancybox td.scope-label,
+#meigee_blacknwhite_general_rollover td.scope-label,
+#meigee_blacknwhite_general_otheroptions td.scope-label,
+#meigee_blacknwhite_productpage_general td.scope-label,
+#meigee_blacknwhite_productpage_layout td.scope-label,
+#meigee_blacknwhite_productpage_brand td.scope-label,
+#meigee_blacknwhite_productpage_additional  td.scope-label,
+#meigee_blacknwhite_sidebar_block_categories td.scope-label,
+#meigee_blacknwhite_sidebar_block_shop_by td.scope-label,
+#meigee_blacknwhite_sidebar_block_compare td.scope-label,
+#meigee_blacknwhite_sidebar_block_compared td.scope-label,
+#meigee_blacknwhite_sidebar_block_viewed td.scope-label,
+#meigee_blacknwhite_sidebar_block_wishlist td.scope-label,
+#meigee_blacknwhite_sidebar_block_tags td.scope-label,
+#meigee_blacknwhite_sidebar_block_orders td.scope-label,
+#meigee_blacknwhite_sidebar_block_subscribe td.scope-label,
+#headerslider_coin td.scope-label,
+#meigee_blacknwhite_bgslider_slides td.scope-label,
+#meigee_blacknwhite_bgslider_slideroptions td.scope-label,
+
+#meigee_blacknwhite_design_appearance table td.scope-label,
+#meigee_blacknwhite_design_icons table td.scope-label,
+#meigee_blacknwhite_design_base table td.scope-label,
+#meigee_blacknwhite_design_menu table td.scope-label,
+#meigee_blacknwhite_design_catlabels table td.scope-label,
+#meigee_blacknwhite_design_header table td.scope-label,
+#meigee_blacknwhite_design_headerslider table td.scope-label,
+#meigee_blacknwhite_design_parallax table td.scope-label,
+#meigee_blacknwhite_design_content table td.scope-label,
+#meigee_blacknwhite_design_page_not_found table td.scope-label,
+#meigee_blacknwhite_design_buttons table td.scope-label,
+#meigee_blacknwhite_design_products table td.scope-label,
+#meigee_blacknwhite_design_social_links table td.scope-label,
+#meigee_blacknwhite_design_footer table td.scope-label,
+
+#meigee_blacknwhite_general_header table td.scope-label,
+#meigee_blacknwhite_general_footer table td.scope-label,
+#meigee_blacknwhite_general_mycart table td.scope-label,
+#meigee_blacknwhite_general_toplinks table td.scope-label,
+#meigee_blacknwhite_general_newsletter table td.scope-label,
+#meigee_blacknwhite_general_productlisting table td.scope-label,
+#meigee_blacknwhite_general_productimages table td.scope-label,
+#meigee_blacknwhite_general_productlabels table td.scope-label,
+#meigee_blacknwhite_general_loginajax table td.scope-label,
+#meigee_blacknwhite_general_contactmap table td.scope-label,
+#meigee_blacknwhite_general_contactmap table td.scope-label
+{
+	background: #f5f5f5 !important;
+	border:1px solid #ebebeb !important;
+	border-left:none !important;
+}
+
+#meigee_blacknwhite_general_header_floatingheader_options{height: 110px;}
+/***********************************************************************/
+
+div.meigee-please {
+	background: #fff;
+	position: relative;
+	min-height: 35px;
+	margin: -9px -9px -6px -33px;
+	padding: 0;
+}
+
+.meigee-thumb { 
+}
+.meigee-radio {
+	margin-right:10px; 
+	margin-bottom:10px; 
+}
+
+/* Sidebars */
+.sidebars-row {
+	overflow: hidden;
+}
+/**/
+
+/* Background Paterns */
+.paterns-row {
+	height:365px;
+	overflow: auto;
+}
+.paterns-row .meigee-thumb { 
+	width:54px; 
+	height:54px;
+}
+/**/
+
+#meigee_blacknwhite_design_icons .fa {display: block; font-size: 36px;}
+#meigee_blacknwhite_design_icons input { font-size: 2px;}
+
+
+/* Custom Widgets Option */
+.title{
+	width: 313px;
+	float: left;
+}
+.title-2{
+	width: 255px;
+	padding-left: 40px;
+	float: left;
+}
+.title h2,
+.title-2 h2{
+	font-size: 16px;
+}
+.widget-content{
+	padding:10px;
+	width: 293px;
+	float: left;
+	background-color:#FFF;
+}
+.widget-content .item{
+	clear: both;
+	display: block;
+	float: left;
+	position: relative;
+	cursor: pointer;
+	-moz-transition:opacity 300ms ease;
+	-webkit-transition:opacity 300ms ease;
+	-o-transition:opacity 300ms ease; 
+	transition:opacity 300ms ease;
+}
+.widget-content .item:hover{
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	position: relative;
+}
+
+.widget-content .item.inline{
+	float: none;
+	clear: none;
+	display: inline-block;
+}
+.widget-holder{clear: both;}
+
+.widget-holder .img-box{position: relative;}
+.widget-holder .img-box .item{position: absolute; width: 50%; height: 15px; padding:8px 0 7px; text-align: center; bottom: 5px;}
+.widget-holder .img-box.only-one .item{width: 100%;}
+.widget-holder .img-box .item.quickview-item{left: 0;}
+.widget-holder .item.quickview-item{background:#f6c48d;}
+.widget-holder .img-box .item.moreviews-item{right: 0;}
+.widget-holder .item.moreviews-item{background:#e0ae77;}
+
+.widget-holder h2.product_name{
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.583em;
+	color:#222;
+	position: relative;
+	margin-bottom: 0;
+}
+.widget-holder .close.product_name{right: -9px; top: -7px;}
+.widget-holder .reviews{
+	color: #aaaaaa;
+	font-size:11px;
+	line-height: 1.2em;
+	text-decoration: none;
+	float: left;
+	margin-top: 9px;
+}
+.widget-holder .rating_stars{margin-right: 5px; margin-top: 10px;}
+.widget-holder .close.rating{right: 0;}
+.widget-holder .review-divide{padding:0 2px;}
+.widget-holder .price{
+	clear: both;
+	position: relative;
+}
+.widget-holder .price .old-price{
+	float: left;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.583em;
+	text-decoration: line-through;
+	color:#aaa;
+	padding:0 5px 0 0;
+	margin-top: 12px;
+}
+.widget-holder .price .special-price{
+	color: #ff1341;
+	float: left;
+	font-size: 24px;
+	font-weight: normal;
+	margin-top: 12px;
+}
+.widget-holder .divider{
+	width: 100%;
+	height: 12px;
+	margin-bottom: 0.75em;
+	margin-top: 0;
+	background: none repeat scroll 0 0 #ffffff;
+	border-bottom: 1px solid #dddddd;
+}
+.widget-holder .rating_stars-sub{clear: both;}
+.widget-holder .close.price{right: -3px; top: -4px;}
+.widget-holder .add_to_cart{margin-right: 12px;}
+.widget-holder .close.add_to_cart{right: 2px;}
+.widget-holder .link-wishlist{margin-right: 2px;}
+.widget-holder .close.wishlist{right: -3px;}
+.widget-content .wishlist-sub{display: inline-block;}
+.widget-content .add_to_cart-sub{clear: both;}
+
+.items-container{
+	float: left;
+	padding: 0 0 0 40px;
+	width: 255px;
+}
+.items-container .item{float: left; clear: both; cursor: pointer; margin-bottom: 5px;}
+.items-container .reviews{clear: both;}
+.items-container .moreviews-item,
+.items-container .quickview-item{
+	width: 147px;
+	height: 30px;
+	padding:0;
+	text-align: center;
+}
+.items-container .moreviews-item img,
+.items-container .quickview-item img{
+	padding:8px 30px 7px;
+}

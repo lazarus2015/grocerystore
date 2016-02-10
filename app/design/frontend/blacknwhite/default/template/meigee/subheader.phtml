@@ -1,0 +1,38 @@
+<?php
+$meigee_blacknwhite_general = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('meigee_blacknwhite_general');
+$meigee_blacknwhite_design = MAGE::helper('ThemeOptionsBlacknwhite')->getThemeOptionsBlacknwhite('meigee_blacknwhite_design');
+$appearance = $meigee_blacknwhite_design['appearance'];
+$toTop = $meigee_blacknwhite_general['otheroptions']['totop'];
+$stickyOpacity = $meigee_blacknwhite_general['header']['floatingheader_opacity'];
+
+/* Font Replacement */
+if ($appearance['font_main'] == 1): 
+	echo '<link href="//fonts.googleapis.com/css?family=' . str_replace(' ', '+', $appearance['gfontmain']) . ':200,300,400,500,600,700,800" rel="stylesheet" type="text/css">';
+endif;
+if(!(($appearance['font_main'] == 1) and ($appearance['gfontmain'] == $appearance['gfont']))):
+	if ($appearance['font'] == 1):
+		echo '<link href="//fonts.googleapis.com/css?family=' . str_replace(' ', '+', $appearance['gfont']) . ':200,300,400,500,600,700,800" rel="stylesheet" type="text/css">';
+	endif;
+endif;
+/* toTop */
+if ($toTop): ?>
+	<script type="text/javascript">
+		jQuery(window).load(function() {
+			if(!((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i)))){
+				jQuery().UItoTop({
+					text: "<?php echo $this->__('Top'); ?>"
+				});
+			}
+		});
+	</script>
+<?php endif;
+
+/* Sticky Header Opacity */
+if($stickyOpacity < 100): ?>
+<style type="text/css">
+header#header.floating{
+	opacity:<?php echo $stickyOpacity/100; ?>;
+	filter:alpha(opacity=<?php echo $stickyOpacity; ?>);
+}
+</style>
+<?php endif;
